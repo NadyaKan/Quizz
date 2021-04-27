@@ -1,0 +1,269 @@
+body {
+  background: #ead3cb;
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+ .navigation {
+  display: flex;
+  justify-content: flex-end;
+  background-color: #bdc7c9;
+  padding: 1%;
+  border-bottom: 3px;
+  border-top: 0px;
+  border-style: solid;
+  border-left: 0px;
+  border-right: 0px;
+  border-color: #2b4f60;
+}
+
+
+.content {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  margin-left: 20%;
+  margin-right: 20%;
+  background: #bdc7c9;
+  padding: 1rem;
+  border: 21px;
+  border-color: #845460;
+  border-style: dotted;
+  border-radius: 10px;
+}
+
+.introduction {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin: 1%;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  text-align: center;
+  border-radius: 16px;
+  margin: 1%;
+}
+
+.login-form {
+  background: white;
+  width: 20rem;
+  height: 15rem;
+  border-radius: 16px;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;
+}
+
+.content-text{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  margin-left: 20%;
+  margin-right: 20%;
+  /* background: #bdc7c9; */
+  background: #845460;
+  padding: 1rem;
+  color: white;
+} 
+
+/* /////////////////////////////////////////////// */
+
+#body-container {
+  position: absolute;
+  background-color: #ead3cb;
+  top: 15%;
+  left: 0px;
+  height: 75%;
+  width: 100%;
+}
+
+#login-container {
+  position: relative;
+  background-color: white;
+  width: 40%;
+  height: 70%;
+  left: 50%;
+  top: 15%;
+  border-radius: 50px;
+  border: 4px solid white;
+  overflow: clip;
+}
+
+#login-title {
+  position: absolute;
+  background-color: rgba(35, 145, 108, 0.349);
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#login {
+  color: #845460;
+  font-size: 3em;
+  font-family: Lato;
+}
+
+#login-input-container {
+  position: absolute;
+  background-color: rgba(29, 212, 151, 0.281);
+  width: 100%;
+  height: 55%;
+  top: 20%;
+  font-size: 100px;
+}
+
+#email-input-container {
+  position: relative;
+  display: flex;
+  width: 60%;
+  height: 23%;
+  left: 20%;
+  top: 10%;
+}
+
+#email {
+  position: relative;
+  min-width: 100%;
+}
+
+#pass-input-container {
+  position: relative;
+  display: flex;
+  width: 60%;
+  height: 23%;
+  left: 20%;
+  top: 20%;
+}
+
+#passwd {
+  position: relative;
+  min-width: 100%;
+}
+
+#or-sign-up-with-email-button-container {
+  position: absolute;
+  background-color: rgba(52, 80, 71, 0.534);
+  width: 100%;
+  height: 25%;
+  top: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  text-align: center;
+  cursor: pointer;
+}
+
+#sign-up-button {
+  background-color: #2b4f60;
+  border: none;
+  color: white;
+  padding: 15px 80px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 40px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+}
+
+#sign-up-button:hover {
+  background-color: #845460;
+  color: white;
+}
+
+
+#index-intro-text-container {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0);
+  width: 35%;
+  height: 40%;
+  bottom: 30%;
+  left: 7%;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+#intro-text-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2b4f60ad;
+  color: white;
+  width: 100%;
+  height: 25%;
+  font-family: Lato;
+  font-size: 4em;
+}
+
+#intro-text-body {
+  position: relative;
+  display: flex;
+  text-align: center;
+  background-color: #508fadb2;
+  color: white;
+  width: 100%;
+  height: 75%;
+  font-family: Lato;
+  font-size: 2.5em;
+  padding-top: 5%;
+}
+
+.pulsing-text-container {
+  margin-left: 5%;
+  margin-top: 3%;
+  width: 40%;
+  height: 25%;
+  float: left;
+  background: #347ec300;
+  overflow: visible;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #2b4f60;
+  font-size: 10em;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  transform: rotate(-5deg);
+  text-shadow: 0 0 10px white;
+}
+
+.animated {
+  animation-duration: 2.5s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.pulse {
+  animation-name: pulse;
+  animation-duration: 1s;
+}
