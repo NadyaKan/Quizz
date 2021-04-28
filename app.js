@@ -1,10 +1,10 @@
 const port = process.env.PORT || 3000;
 const express = require('express');
-const logController = require('./controllers/logController');
-const indexController = require('./controllers/indexController');
-const errorController = require('./controllers/errorController');
-const signupController = require('./controllers/signupController');
-const profileController = require('./controllers/profileController');
+const logController = require('./controllers/LogController');
+const indexController = require('./controllers/IndexController');
+const errorController = require('./controllers/ErrorController');
+const signupController = require('./controllers/SignupController');
+const profileController = require('./controllers/ProfileController');
 const app = express();
 const expressLayouts = require('express-ejs-layouts');
 
