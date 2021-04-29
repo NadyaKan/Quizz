@@ -99,3 +99,15 @@ header{
     padding: 5%;
 
 }
+
+.error-message {
+    font-size: 8rem;
+    color: #ead3cb;
+  } 
+
+.errortext-container {
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+
+  }
