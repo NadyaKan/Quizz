@@ -15,7 +15,7 @@ app.use(express.static('public'));
 app.use('/css', express.static('public/css'));
 app.use('/js', express.static('public/js'));
 app.use('/img', express.static('public/img'));
-app.use(errorController.respondInternalError);
+
 app.use(expressLayouts);
 
 //routes
@@ -32,6 +32,11 @@ app.get('/about',function(req, res){
     res.render('about');
 });
 
+///should go into controller? ?is it getting info from DB? 
+app.get('/user/:name',function(req, res){
+    let username = req.params.name;
+    res.render('user', {name: username}); 
+});
 
 //views
 app.set('views', './views');
@@ -39,6 +44,7 @@ app.set('view engine', 'ejs');
 app.set('layout', './layout');
 
 //after middleware
+app.use(errorController.respondInternalError);
 app.use(errorController.respondNoResourceFound);
 
 app.listen(port, () => console.info(`server listening on port ${port}`));
