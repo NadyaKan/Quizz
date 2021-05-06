@@ -113,6 +113,20 @@ header{
 
   }
 
+/* ----------------------THANK YOU PAGE-------------------- */
+
+.welcome-message {
+    font-size: 8rem;
+    color: #ead3cb;
+  } 
+
+.welcome-container {
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+
+  }
+
  /* ----------------------USER PAGE-------------------- */
   .hellotext-container {
     margin: auto;
@@ -220,4 +234,66 @@ header{
         margin-block-start: 0;
     }
 
-    /* ------------------------------------------- */
+ /* ----------------------ALL USERS PAGE-------------------- */ 
+
+
+  .alluser-container {
+    position: absolute;
+    background-color: #bdc7c9;
+    width: 90%;
+    height: 80%;
+    left: 5%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 10px rgb(117, 117, 117);
+  }
+  
+  .table-container {
+    position: absolute;
+    overflow: auto;
+    width: 96%;
+    height: 92%;
+    left: 2%;
+    top: 4%;
+  }
+  
+  #users-table {
+    border-collapse: collapse;
+  }
+  th {
+    padding: 1rem 2rem;
+    letter-spacing: 0.1rem;
+    font-size: 1.7rem;
+    border-bottom: 2px solid rgb(104, 104, 104);
+  }
+  td {
+    padding: 1rem 2rem;
+    font-size: 1.3rem;
+    text-align: center;
+  }
+  
+  .space {
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+  
+  .userid {
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+  }
+  .username {
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+  }
+  .useremail {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+  .userpassword {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+  }
+  .regdate {
+    padding-left: 0.5rem;
+    padding-right: 0.7rem;
+  }

@@ -3,8 +3,10 @@ const express = require('express');
 const logController = require('./controllers/LogController');
 const indexController = require('./controllers/IndexController');
 const errorController = require('./controllers/ErrorController');
-const signupController = require('./controllers/SignupController');
+const registerController = require('./controllers/RegisterController');
 const profileController = require('./controllers/ProfileController');
+const lobbyController = require('./controllers/lobbyController');
+const dataCTRL = require('./controllers/databaseController');
 const app = express();
 const expressLayouts = require('express-ejs-layouts');
 
@@ -15,15 +17,23 @@ app.use(express.static('public'));
 app.use('/css', express.static('public/css'));
 app.use('/js', express.static('public/js'));
 app.use('/img', express.static('public/img'));
-
+app.use(
+    express.urlencoded({
+        extended: true
+    })
+)
 app.use(expressLayouts);
 
 //routes
 app.get('/', indexController.getIndex);
-app.get('/sign-up', signupController.getSignup);
-app.post('/sign-up', signupController.postSignup);
+app.get('/sign-up', registerController.getSignup);
+app.post('/sign-up', registerController.postSignup);
 app.get('/profile', profileController.getProfile);
 app.post('/profile', profileController.postProfile);
+app.get('/users', registerController.getAllRegistered);
+
+app.get('/lobby', lobbyController.createLobby);
+app.get('/join', lobbyController.joinLobby);
 
 app.get('/howstart',function(req, res){
     res.render('howstart');
@@ -32,11 +42,6 @@ app.get('/about',function(req, res){
     res.render('about');
 });
 
-///should go into controller? ?is it getting info from DB? 
-app.get('/user/:name',function(req, res){
-    let username = req.params.name;
-    res.render('user', {name: username}); 
-});
 
 //views
 app.set('views', './views');
@@ -47,4 +52,8 @@ app.set('layout', './layout');
 app.use(errorController.respondInternalError);
 app.use(errorController.respondNoResourceFound);
 
-app.listen(port, () => console.info(`server listening on port ${port}`));
+
+
+
+dataCTRL.openConnection;
+app.listen(port, () => console.info(`server listening on port ${port}`))

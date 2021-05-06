@@ -16,6 +16,7 @@ body {
     text-align: center;
     color: #2b4f60;
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+    margin-top: 6rem;
 }
 
 .container h1 {
