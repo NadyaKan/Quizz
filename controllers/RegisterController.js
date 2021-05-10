@@ -1,6 +1,7 @@
 const User = require('../models/userModel');
 const mongoose = require('mongoose');
 const db = mongoose.connection;
+const dataCTRL = require('./databaseController');
 
 
 exports.getSignup = (req, res) => {
@@ -8,19 +9,9 @@ exports.getSignup = (req, res) => {
 };
 
 exports.postSignup = (req, res) => {
-    db.collection('registered').countDocuments({}, (err, count) => {    //to access collection entry count
-        if(err) throw err;
-        User.create({
-            name: req.body.username,
-            email: req.body.email,
-            password: req.body.password,
-            date: new Date().toLocaleDateString(), 
-            id: count + 1
-        }, (err, data) => {
-            if(err) throw err;
-            console.log(`successfully inserted ${data}`);
-        })   
-    })
+    const id = 'quiz-data';
+    dataCTRL.useDB(id);
+    dataCTRL.isertUserIntoRegistered(req);
     res.status(200).render('ty', {name: req.body.username});
 };
 
