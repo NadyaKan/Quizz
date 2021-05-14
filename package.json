@@ -4,9 +4,6 @@
   "description": "web development quiz application",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
-    "test": "jest",
-    "testEnvironment": "node"
   },
   "author": "",
   "license": "ISC",

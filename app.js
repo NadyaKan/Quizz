@@ -1,14 +1,15 @@
-const port = process.env.PORT || 3000;
-const express = require('express');
-const logController = require('./controllers/LogController');
-const indexController = require('./controllers/IndexController');
-const errorController = require('./controllers/ErrorController');
-const registerController = require('./controllers/RegisterController');
-const profileController = require('./controllers/ProfileController');
-const lobbyController = require('./controllers/lobbyController');
-const dataCTRL = require('./controllers/databaseController');
-const app = express();
-const expressLayouts = require('express-ejs-layouts');
+const   port = process.env.PORT || 3000,
+        logController = require('./controllers/LogController'),
+        indexController = require('./controllers/IndexController'),
+        errorController = require('./controllers/ErrorController'),
+        registerController = require('./controllers/RegisterController'),
+        profileController = require('./controllers/ProfileController'),
+        mongoose = require('mongoose'),
+        expressLayouts = require('express-ejs-layouts'),
+        express = require('express'),
+        app = express()
+;
+
 
 //before middleware
 app.use(logController.log);
@@ -17,23 +18,17 @@ app.use(express.static('public'));
 app.use('/css', express.static('public/css'));
 app.use('/js', express.static('public/js'));
 app.use('/img', express.static('public/img'));
-app.use(
-    express.urlencoded({
-        extended: true
-    })
-)
 app.use(expressLayouts);
+app.use(express.urlencoded({extended: true}));
 
 //routes
-app.get('/', indexController.getIndex);
-app.get('/sign-up', registerController.getSignup);
+app.get('/', indexController.getIndexPage);
+app.get('/sign-up', registerController.getSignupPage);
 app.post('/sign-up', registerController.postSignup);
-app.get('/profile', profileController.getProfile);
+app.get('/profile', profileController.getProfilePage);
 app.post('/profile', profileController.postProfile);
-app.get('/users', registerController.getAllRegistered);
+app.get('/users', registerController.getAllRegisteredPage);
 
-app.get('/lobby', lobbyController.createLobby);
-app.get('/join', lobbyController.joinLobby);
 
 app.get('/howstart',function(req, res){
     res.render('howstart');
@@ -53,7 +48,10 @@ app.use(errorController.respondInternalError);
 app.use(errorController.respondNoResourceFound);
 
 
+//databse
+const DB_URI = process.env.DB_URI || "mongodb://mongo:27017/quiz-data"; //Main DB
+mongoose.connect(DB_URI, {useNewUrlParser: true}).then(() => {
+    app.listen(port, () => console.info(`server listening on port ${port}`))
+    console.log('Main DB connected');
+});
 
-
-dataCTRL.openConnection;
-app.listen(port, () => console.info(`server listening on port ${port}`))
