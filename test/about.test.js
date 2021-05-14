@@ -1,4 +1,5 @@
-const { app, request } = require("../commonJest");
+const app = require("../app");
+const request = require("supertest");
 
 it("renders about correctly", (done) => {
   request(app)
