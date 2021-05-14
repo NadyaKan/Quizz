@@ -1,5 +1,5 @@
 const User = require('../models/userModel');
-const dataCTRL = require('./databaseController')
+const dataCTRL = require('./databaseController');
 
 
 exports.getSignupPage = (req, res) => {
