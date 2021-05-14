@@ -1,3 +1,3 @@
-exports.getIndex = (req, res) => {
+exports.getIndexPage = (req, res) => {
     res.render('index');
 };
