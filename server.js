@@ -1,5 +1,6 @@
 const app = require("./app");
 const mongoose = require("mongoose");
+const port = process.env.PORT || 3000;
 
 const DB_URI = process.env.MONGODB_URI || "mongodb://mongo:27017/quiz-data"; //Main DB
 
