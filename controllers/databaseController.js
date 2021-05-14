@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const db = mongoose.connection;
 
+
 exports.openConnection = () => {
     const DB_URI = "mongodb://mongo:27017/quiz-data"; //Main DB
     mongoose.connect(DB_URI).then(() => {
