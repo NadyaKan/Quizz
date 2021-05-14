@@ -24,7 +24,7 @@ app.use(express.urlencoded({extended: true}));
 //routes
 app.get('/', indexController.getIndexPage);
 app.get('/sign-up', registerController.getSignupPage);
-app.post('/sign-up', registerController.postSignup);
+//app.post('/sign-up', registerController.postSignup);
 app.get('/profile', profileController.getProfilePage);
 app.post('/profile', profileController.postProfile);
 app.get('/users', registerController.getAllRegisteredPage);
