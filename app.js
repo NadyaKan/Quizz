@@ -1,4 +1,3 @@
-const port = process.env.PORT || 3000;
 const logController = require("./controllers/LogController");
 const indexController = require("./controllers/IndexController");
 const errorController = require("./controllers/ErrorController");
