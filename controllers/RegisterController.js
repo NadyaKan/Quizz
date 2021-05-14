@@ -18,3 +18,7 @@ exports.getAllRegisteredPage = (req, res) =>{
         res.status(200).render('allusers', {all: users});
     })
 }
+
+exports.deleteAllRegistered = () => {
+    User.remove({}); 
+}

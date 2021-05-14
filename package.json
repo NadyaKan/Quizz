@@ -2,16 +2,20 @@
   "name": "quiz-project",
   "version": "1.0.0",
   "description": "web development quiz application",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon app.js",
-    "test": "jest",
+    "start": "nodemon server.js",
+    "test": "jest --coverage",
     "testEnvironment": "node"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@shelf/jest-mongodb": "^1.2.4",
+    "coverage": "^0.4.1",
     "ejs": "^3.1.6",
+    "eslint": "^7.26.0",
+    "eslint-plugin-node": "^11.1.0",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
     "http-status-codes": "^2.1.4",

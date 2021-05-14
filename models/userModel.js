@@ -6,7 +6,12 @@ const userSchema = mongoose.Schema({
     email: String,
     password: String,
     date: String,
-    id: Number
+    id: Number,
 });
+
+
+userSchema.methods.getName =() =>{
+    return this.name;
+}
 
 module.exports = mongoose.model('registered', userSchema); //collection, schema

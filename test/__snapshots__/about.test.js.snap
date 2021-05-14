@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders about correctly 1`] = `
+"<!DOCTYPE html>
+<html lang=\\"en\\">
+<head>
+    <meta charset=\\"UTF-8\\">
+    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1.0\\">
+    <title></title>
+    <link rel=\\"stylesheet\\" href=\\"/css/main.css\\">
+</head>
+<body>
+    <!-- <div class=\\"wrapper\\"> -->
+       <header><div class=\\"navigation-bar\\">
+
+   <div class=\\"nav-btns-left\\">
+        <a href=\\"/\\" class=\\"home-link-btn\\">Home</a>
+   </div> 
+
+    <div class=\\"nav-btns-right\\">
+
+        <a class=\\"navigation-button-text-only\\" href=\\"/howstart\\">How to start?</a>
+
+        <a class=\\"navigation-button-text-only\\" href=\\"/about\\">About us?</a>
+
+        <a class=\\"navigation-button-transparent\\" href=\\"/sign-up\\">Sign up</a>
+
+        <a class=\\"navigation-button-full\\" href=\\"/profile\\">Profile</a>
+
+    </div>
+</div></header> 
+        <main><div class =\\"about-section-background\\">
+<div class =\\"about-section-foreground\\">
+    <div class=\\"about-image\\">
+        <img class=\\"aboutimg\\" src=\\"/img/quizz.jpg\\" alt=\\"quizimage\\">
+    </div>
+       <div class=\\"about-text\\"><h1>ABOUT US </h1>
+    <p>We are students of International Media and Computing at HTW Berlin.
+        This quizz game was created as a semester project for the course Agile Web Developement. To create the game we used following technologies: JS, Node.js, Express.js, EJS, MongoDB, and Vue.js
+    </p>
+</div> 
+</div>
+    
+</div>
+</main>
+        <footer><p class=\\"footer-text\\">HTW SoSe 2021 Kjell Liebher, Nadya Kandakova, Muhammad Safarov, Yana Stasevich</p>
+
+
+
+</footer>
+    <!-- </div> -->
+</body>
+</html>"
+`;

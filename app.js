@@ -4,7 +4,6 @@ const port = process.env.PORT || 3000,
   errorController = require("./controllers/ErrorController"),
   registerController = require("./controllers/RegisterController"),
   profileController = require("./controllers/ProfileController"),
-  mongoose = require("mongoose"),
   expressLayouts = require("express-ejs-layouts"),
   express = require("express"),
   app = express();
@@ -42,9 +41,6 @@ app.set("layout", "./layout");
 app.use(errorController.respondInternalError);
 app.use(errorController.respondNoResourceFound);
 
-//databse
-const DB_URI = process.env.MONGODB_URI || "mongodb://mongo:27017/quiz-data"; //Main DB
-mongoose.connect(DB_URI, { useNewUrlParser: true }).then(() => {
-  app.listen(port, () => console.info(`server listening on port ${port}`));
-  console.log("Main DB connected");
-});
+
+
+module.exports = app
