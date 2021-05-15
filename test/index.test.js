@@ -28,11 +28,6 @@ describe("insert", () => {
 });
 
 describe("remove all", () => {
-  afterAll(async () => {
-    await connection.close();
-    await db.close();
-  });
-
   it("should remove all", async () => {
     const mockUser = {
       name: "Dummy",
