@@ -3,6 +3,7 @@ const indexController = require("./controllers/IndexController");
 const errorController = require("./controllers/ErrorController");
 const registerController = require("./controllers/RegisterController");
 const profileController = require("./controllers/ProfileController");
+const questionsController = require("./controllers/questionsController");
 const expressLayouts = require("express-ejs-layouts");
 const express = require("express");
 const app = express();
@@ -30,6 +31,23 @@ app.get("/howstart", function (req, res) {
 });
 app.get("/about", function (req, res) {
   res.render("about");
+});
+
+
+app.get("/questions", function (req, res) {
+  res.render("questions");
+});
+app.get("/questions/:id", function (req, res) {
+  //
+});
+app.post("/questions", questionsController.createOneQuizQuestion);
+
+app.put("/questions/:id", function (req, res) {
+  //
+});
+
+app.delete("/questions/:id", function (req, res) {
+  //
 });
 
 //views

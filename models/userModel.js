@@ -1,16 +1,35 @@
 const mongoose = require("mongoose");
 mongoose.pluralize(null);
 
-const userSchema = mongoose.Schema({
-  name: String,
-  email: String,
-  password: String,
-  date: String,
-  id: Number,
+const userSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    lowercase: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  date: Date,
+  id: mongoose.Schema.Types.ObjectId,
 });
 
 userSchema.methods.getName = () => {
   return this.name;
 };
 
-module.exports = mongoose.model("registered", userSchema); //collection, schema
+userSchema.methods.getInfo = function () {
+  return `Name: ${this.name} Email: ${this.email} Password: ${this.password}`;
+};
+
+userSchema.methods.findLocalUsers = function () {
+  return this.model("Registered").find({ email: this.email }).exec();
+};
+
+module.exports = mongoose.model("Registered", userSchema); //collection, schema

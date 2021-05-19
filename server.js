@@ -10,6 +10,7 @@ const DB_URI =
     ? "mongodb://mongo:27017/quiz_test_db"
     : "mongodb://mongo:27017/quiz_db");
 
+//"mongodb://127.0.0.1:27017/quiz_db"
 mongoose.connect(DB_URI, { useNewUrlParser: true }).then(() => {
   app.listen(port, () => console.info(`server listening on port ${port}`));
   console.log("Main DB connected");
