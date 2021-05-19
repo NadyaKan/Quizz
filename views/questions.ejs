@@ -1,22 +1,38 @@
-<div id="question-card">
-  <form action="/questions" method="post">
-    <p id="par">Your Question</p>
+<div class="question-card">
+  <form class="centered-form" action="/questions" method="post">
+    <p class="par">Your Question</p>
     <label for="Question"></label>
-    <input
-      id="input-group"
-      type="text"
-      name="question"
-      placeholder="Write your question here"
-    />
+    <div>
+      <input
+        class="input-group"
+        type="text"
+        name="question"
+        placeholder="Write your question here"
+      />
 
-    <p id="par">Answer Options</p>
+      <p class="par">Answer Options</p>
 
-    <input id="input-group" type="text" name="option_1" placeholder="Truth" />
+      <input
+        class="input-group"
+        type="text"
+        name="option_1"
+        placeholder="Truth"
+      />
 
-    <input id="input-group" type="text" name="option_2" placeholder="Lie 1" />
+      <input
+        class="input-group"
+        type="text"
+        name="option_2"
+        placeholder="Lie 1"
+      />
 
-    <input id="input-group" type="text" name="option_3" placeholder="Lie 2" />
-
-    <button type="submit" id="question_submit">Submit your question</button>
+      <input
+        class="input-group"
+        type="text"
+        name="option_3"
+        placeholder="Lie 2"
+      />
+    </div>
+    <button type="submit" class="question_submit">Submit your question</button>
   </form>
 </div>

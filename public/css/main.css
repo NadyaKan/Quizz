@@ -310,21 +310,20 @@ td {
 
 /* ----------------------QUESTIONS PAGE-------------------- */
 
-#question-card {
+.question-card {
   background-color: #a06674;
-  width: 600px;
-  padding: 40px;
-  top: 50%;
+  display: flex;
+  width: 40rem;
+  height: 25rem;
   border-radius: 10px;
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  max-width: 100%;
   justify-content: center;
   align-items: center;
-  margin: auto;
+  margin: 0 auto;
+  margin-top: 4vh;
 }
 
-#question_submit {
+.question_submit {
   border: none;
   background-color: rgb(255, 204, 230);
   color: #000;
@@ -335,18 +334,21 @@ td {
   padding: 1rem;
   border-radius: 24px;
 }
+.centered-form {
+  width: 60%;
+}
 
-#question_submit:hover {
+.question_submit:hover {
   background-color: rgb(255, 153, 206);
 }
 
-#par {
+.par {
   text-align: center;
   margin: 0;
   font-size: 35px;
   font-weight: 300;
 }
-#input-group {
+.input-group {
   border: 0;
   background-color: #ead3cb;
   display: block;
@@ -359,7 +361,7 @@ td {
   outline: none;
   color: black;
 }
-#input-group:hover {
+.input-group:hover {
   width: 95%;
   border-color: rgb(238, 76, 76);
 }
