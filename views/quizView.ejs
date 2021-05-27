@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+  <title>User Overview</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/quizview.css" type="text/css" />
+</head>
+<body>
+  <img src="/img/index-bg.jpg" alt="minimalistic shapes" />
+  <div class="opacity-black-box"></div>
+  <div class="allquiz-container">
+    <div class="table-container">
+      
+      <table id="quiz-table">
+      <h1><%= quiz.title %></h1>
+            
+          <% for(var i=0; i < quiz.data.length; i++) { %>
+            <tr>
+              <td id="upper" class="qa">Question:</td>
+              <td id="upper" class="questions"><%= quiz.data[i].question %></td>
+            </tr>
+            <tr>
+              <td>Answers:</td>
+              <% quiz.data[i].answer.forEach(e => { %>
+                <td id="content" class="options"><%= e.option %> : <%= e.correct %></td>
+              <% }) %> 
+            </tr>
+          <% } %>
+              
+
+      </table>
+      
+    </div>
+  </div>
+  
+</body>

@@ -1,52 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>CircleType</title>
-    <link rel="stylesheet" href="/css/index.css" type="text/css" />
-  </head>
-  <body>
-    <div id="game-name">
-      <p>Game Name</p>
+<head>
+  <title>Friends Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/index.css" type="text/css" />
+</head>
+<body>
+  <img src="/img/index-bg.jpg" alt="minimalistic shapes" />
+  <div class="opacity-black-box"></div>
+  <div id="game-name">Friends Quiz</div>
+  <form method="get" action="/get-started">
+    <div class="button-container">
+      <button class="big-button">GET STARTED</button>
     </div>
-    <div class="container">
-      <a href="#section2" class="animated-word">GET STARTED</a>
-    </div>
+  </form>
+</body>
 
-    <div>
-      <a href="/questions" class="createQuizBtn">Create your Quiz</a>
-    </div>
-    <div class="login-signup-stuff" id="section2">
-      <p id="temp">(Login or Signup if no Account)</p>
-    </div>
-  </body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="/js/circletype.min.js"></script>
-  <script>
-    new CircleType(document.getElementById("game-name")).radius(1000);
-    $(document).ready(function () {
-      // Add smooth scrolling to all links
-      $("a").on("click", function (event) {
-        // Make sure this.hash has a value before overriding default behavior
-        if (this.hash !== "") {
-          // Prevent default anchor click behavior
-          event.preventDefault();
-          // Store hash
-          var hash = this.hash;
-          // Using jQuery's animate() method to add smooth page scroll
-          // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-          $("html, body").animate(
-            {
-              scrollTop: $(hash).offset().top,
-            },
-            800,
-            function () {
-              // Add hash (#) to URL when done scrolling (default click behavior)
-              window.location.hash = hash;
-            }
-          );
-        } // End if
-      });
-    });
-  </script>
-</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/circletype.min.js"></script>
+<script>
+  new CircleType(document.getElementById("game-name")).radius(1600);
+</script>
