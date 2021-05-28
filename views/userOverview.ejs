@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+  <title>User Overview</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/useroverview.css" type="text/css" />
+</head>
+<body>
+  <img src="/img/index-bg.jpg" alt="minimalistic shapes" />
+  <div class="opacity-black-box"></div>
+  <div class="alluser-container">
+    <div class="table-container">
+      
+      <table id="users-table" width="100%">
+        <thead>
+          <tr>
+            <th class="userid">ID</th>
+            <th class="username">USERNAME</th>
+            <th class="useremail">EMAIL</th>
+            <th class="userpassword">PASSWORD</th>
+            <th class="regdate">DATE</th>
+          </tr>
+        </thead>
+        <tr>
+          <td class="space"></th>
+          <td class="space"></th>
+          <td class="space"></th>
+          <td class="space"></th>
+          <td class="space"></th>
+        </tr>
+        <% all.forEach(e => { %>
+        <tbody>
+          <tr>
+            <td>
+              <a href="<%=`/user/${e.id}/edit` %>"><%= e.id %></a>
+            </th>
+            <td><%= e.username %></th>
+            <td><%= e.email %></th>
+            <td><%= e.password %></th>
+            <td><%= e.date %></th>
+          </tr>
+        </tbody>
+        <% }); %>
+      </table>
+      
+    </div>
+  </div>
+  
+</body>

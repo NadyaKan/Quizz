@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+  <title>Welcome</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/update.css" type="text/css" />
+</head>
+<body>
+  <img src="/img/index-bg.jpg" alt="minimalistic shapes" />
+  <div class="opacity-black-box"></div>
+  <div id="update-box">
+    <form method="POST" action="<%=`/user/${user._id}/update?_method=PUT`%>">
+      <h1>Edit User</h1>
+      <div class="update-fields">
+        <input type="text" name="_id" id="userId" value="<%= user.id %>"  readonly>
+        <input type="text" name="username" id="username" placeholder="Username" value="<%= user.username %>" />
+        <input type="text" name="email" id="email" placeholder="E-mail" value="<%= user.email %>" autofocus/>
+        <input type="password" name="password" id="password" placeholder="Password" value="<%= user.password %>"/>
+        <input type="submit" name="submit_edit" value="Update" />
+      </div>
+    </form>
+  </div>
+</body>

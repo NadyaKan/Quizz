@@ -1,70 +1,135 @@
 body {
   position: relative;
-  background: #2b4f60;
-  height: 2000px;
-}
-main{
+  align-items: center;
+  text-align: center;
   display: block;
 }
 
-
-#game-name {
-  color: #845460;
-  font-family: cursive;
-  font-size: 12rem;
-  letter-spacing: 0.5rem;
-  -webkit-text-stroke: 4px #ead3cb;
-  font-weight: bold;
-  height: 25rem;
+.navigation-bar {
+  display: none;
 }
 
-.container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin-top: 5rem;
-}
-.animated-word {
-  font-family: Helvetica;
-  letter-spacing: 0.4em;
-  font-weight: 600;
-  font-size: 2rem;
-  color: #ffffffb2;
-  cursor: pointer;
-  max-width: 25%;
-  outline: 3px solid;
-  outline-color: rgba(226, 228, 231, 0.5);
-  outline-offset: 20px;
-  transition: all 600ms cubic-bezier(0.2, 0, 0, 0.8);
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.animated-word:hover {
-  color: rgb(255, 255, 255);
-  outline-color: rgba(71, 126, 232, 0);
-  outline-offset: 11.25rem;
-}
-
-.login-signup-stuff {
+img {
   position: absolute;
-  width: 60%;
-  height: 30%;
-  margin-left: 20%;
-  margin-top: 30rem;
-  background-color: aliceblue;
+  width: 100%;
+  height: 100vh;
+  top: 0px;
+  z-index: 1;
+}
+
+.opacity-black-box {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.281);
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  z-index: 2;
+}
+/*      GAME NAME       */
+#game-name {
+  position: absolute;
+  display: flexbox;
+  width: 100%;
+  height: 50%;
+  top: -5vh;
+  z-index: 3;
+  font-size: 25vh;
+  letter-spacing: 0.4vh;
   text-align: center;
-  align-items: center;
-  justify-content: center;
+  color: lightgrey;
+  font-family: "Niconne", cursive;
+  font-weight: 700;
+  text-shadow: 5px 5px 0px #eb452b, 10px 10px 0px #efa032, 15px 15px 0px #46b59b,
+    20px 20px 0px #017e7f, 25px 25px 0px #052939, 30px 30px 0px #c11a2b,
+    35px 35px 10px rgba(255, 255, 255, 0.877);
 }
 
-html {
-  scroll-behavior: smooth;
+/*      BUTTON      */
+.button-container {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 50%;
+  max-width: 100%;
+  z-index: 3;
+  top: 50%;
+}
+/* A - text, B - line, C - third ring, D - hover, E - top background, F - ring below*/
+:root {
+  --colorShadeA: rgb(255, 255, 255);
+  --colorShadeB: rgba(75, 16, 36, 0.589);
+  --colorShadeC: rgb(161, 27, 35);
+  --colorShadeD: rgb(216, 63, 63);
+  --colorShadeE: rgb(218, 42, 42);
+  --colorShadeF: rgb(52, 12, 28);
 }
 
-#temp {
-  margin-top: 25%;
-  font-size: 2rem;
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
+* {
+  box-sizing: border-box;
+}
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+button {
+  position: relative;
+  top: 10vh;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: 4vh;
+  color: var(--colorShadeA);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: inherit;
+  z-index: 3;
+}
+
+button.big-button {
+  padding: 1em 2em;
+  border: 2px solid var(--colorShadeA);
+  border-radius: 1em;
+  background: var(--colorShadeE);
+  transform-style: preserve-3d;
+  transition: all 175ms cubic-bezier(0, 0, 1, 1);
+  z-index: 3;
+}
+button.big-button::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--colorShadeC);
+  border-radius: inherit;
+  box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.75em 0 0 var(--colorShadeF);
+  transform: translate3d(0, 0.75em, -1em);
+  transition: all 175ms cubic-bezier(0, 0, 1, 1);
+}
+
+button.big-button:hover {
+  background: var(--colorShadeD);
+  transform: translate(0, 0.375em);
+}
+
+button.big-button:hover::before {
+  transform: translate3d(0, 0.75em, -1em);
+}
+
+button.big-button:active {
+  transform: translate(0em, 0.75em);
+}
+
+button.big-button:active::before {
+  transform: translate3d(0, 0, -1em);
+
+  box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.25em 0 0 var(--colorShadeB);
 }

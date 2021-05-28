@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+  <title>User Overview</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/quizoverview.css" type="text/css" />
+</head>
+<body>
+  <img src="/img/index-bg.jpg" alt="minimalistic shapes" />
+  <div class="opacity-black-box"></div>
+  <div class="allquiz-container">
+    <div class="table-container">
+      
+      <table id="quiz-table" width="100%">
+        <thead>
+          <tr>
+            <th class="quizId">ID</th>
+            <th class="quizTitle">TITLE</th>
+            <th class="qAmount">QUESTIONS</th>
+          </tr>
+        </thead>
+        <tr>
+          <td class="space"></th>
+          <td class="space"></th>
+          <td class="space"></th>
+        </tr>
+        <% quizzes.forEach(q => { %>
+        <tbody>
+          <tr>
+            <td>
+              <a href="<%=`/user/quizzes/${q.id}` %>"><%= q.id %></a>
+            </td>
+            <td><%= q.title %></td>
+            <td><%= q.data.length %></td>
+          </tr>
+        </tbody>
+        <% }); %>
+      </table>
+      
+    </div>
+  </div>
+  
+</body>

@@ -1,0 +1,187 @@
+body {
+  display: block;
+  position: relative;
+}
+
+.navigation-bar {
+  display: none;
+}
+
+img {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0px;
+  z-index: 1;
+}
+
+.opacity-black-box {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.109);
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  z-index: 2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.new-quiz {
+  text-align: center;
+  display: block;
+  font-weight: 700;
+  font-size: 5vh;
+  margin-top: 6vh;
+}
+
+.enter-quiz {
+  text-align: center;
+  display: block;
+  font-weight: 700;
+  font-size: 5vh;
+  margin-top: 6vh;
+}
+
+/*  GRID    */
+
+.menu-container {
+  position: absolute;
+  width: 100%;
+  height: 80vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "Settings Enter-Code Create-Quiz"
+    "Profile Enter-Code Create-Quiz";
+  z-index: 3;
+  top: 5vh;
+}
+
+.Settings {
+  grid-area: Settings;
+  background-color: rgba(255, 255, 255, 0.315);
+  margin: 3vh;
+  float: left;
+  padding: 10px;
+  border: 1px solid black;
+  box-shadow: 0 5px 10px black;
+  border-radius: 10px;
+  z-index: 3;
+  text-align: center;
+  font-weight: 700;
+  font-size: 3vh;
+  margin-top: 5vh;
+  margin-bottom: -1vh;
+}
+
+.Profile {
+  grid-area: Profile;
+  background-color: rgba(255, 255, 255, 0.315);
+  margin: 3vh;
+  float: left;
+  padding: 10px;
+  border: 1px solid black;
+  box-shadow: 0 5px 10px black;
+  border-radius: 10px;
+  z-index: 3;
+  text-align: center;
+  font-weight: 700;
+  font-size: 3vh;
+  margin-top: 5vh;
+  margin-bottom: -1vh;
+}
+
+.Enter-Code {
+  grid-area: Enter-Code;
+  background-color: rgba(255, 255, 255, 0.315);
+  margin: 3vh;
+  float: left;
+  padding: 10px;
+  height: 80vh;
+  border: 1px solid black;
+  box-shadow: 0 5px 10px black;
+  border-radius: 10px;
+  text-align: center;
+  display: block;
+  font-weight: 700;
+  font-size: 3vh;
+}
+
+.Create-Quiz {
+  grid-area: Create-Quiz;
+  background-color: rgba(255, 255, 255, 0.315);
+  margin: 3vh;
+  float: left;
+  padding: 10px;
+  height: 80vh;
+  border: 1px solid black;
+  box-shadow: 0 5px 10px black;
+  border-radius: 10px;
+  text-align: center;
+  display: block;
+  font-weight: 700;
+  font-size: 3vh;
+}
+
+.small-section {
+  margin-top: 12vh;
+}
+
+.large-section {
+  margin-top: 6vh;
+}
+#top-word1 {
+  margin-top: 25vh;
+}
+
+#top-word2 {
+  margin-top: 15vh;
+}
+
+.Settings:hover {
+  box-shadow: 0 5px 15px rgb(124, 124, 124);
+  background-color: rgba(124, 124, 124, 0.486);
+  border: 1px solid rgb(124, 124, 124);
+  font-size: 3.5vh;
+  cursor: pointer;
+}
+
+.Profile:hover {
+  box-shadow: 0 5px 15px rgb(119, 156, 255);
+  background-color: rgba(119, 155, 255, 0.384);
+  border: 1px solid rgb(119, 156, 255);
+  font-size: 3.5vh;
+  cursor: pointer;
+}
+
+.Enter-Code:hover {
+  box-shadow: 0 5px 15px rgb(255, 189, 104);
+  background-color: rgba(255, 189, 104, 0.384);
+  border: 1px solid rgb(255, 189, 104);
+  font-size: 3.5vh;
+  cursor: pointer;
+}
+
+.Create-Quiz:hover {
+  box-shadow: 0 5px 15px rgb(130, 255, 119);
+  background-color: rgba(130, 255, 119, 0.384);
+  border: 1px solid rgb(130, 255, 119);
+  font-size: 3.5vh;
+  cursor: pointer;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
