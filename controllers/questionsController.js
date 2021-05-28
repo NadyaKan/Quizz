@@ -15,7 +15,7 @@ exports.createOneQuizQuestion = async (req, res) => {
       option1,
       option2,
       option3,
-      isCorrect: "option1"
+      isCorrect: "option1",
     });
 
     return res.status(201).json(quiz);

@@ -36,6 +36,20 @@ exports.showQuiz = (req, res) => {
     })
 }
 
+exports.removeAllQuizzes = (req, res) => {
+    let user_id = req.params.id; //  /user/:id/quizzes
+    Quiz.remove({creator: user_id}, (result) => {
+        res.send(result);
+    })
+}
+
+exports.removeQuizById = (req, res) => {
+    let quiz_id = req.params.id; //  /user/:id/quizzes
+    Quiz.remove({quiz_id}, (result) => {
+        res.send(result);
+    })
+}
+
 // remove quiz 
 // remove all quizzes from user
 // get quiz by id, maybe name if unique innerhalb eines users
