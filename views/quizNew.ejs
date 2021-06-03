@@ -1,0 +1,75 @@
+<div class="question-card">
+  <form class="centered-form" action="/user/quizzes/create" method="post">
+    <p class="par">Quiz Title</p>
+    <input type="text" name="title" placeholder="Your Quiz title" />
+
+    <p class="par">Your 1st Question</p>
+    <label for="Question"></label>
+    <div>
+      <input
+        class="input-group"
+        type="text"
+        name="question1"
+        placeholder="Write your question here"
+      />
+
+      <p class="par">Answer Options</p>
+
+      <input
+        class="input-group"
+        type="text"
+        name="option1_1"
+        placeholder="Truth"
+      />
+
+      <input
+        class="input-group"
+        type="text"
+        name="option1_2"
+        placeholder="Lie 1"
+      />
+
+      <input
+        class="input-group"
+        type="text"
+        name="option1_3"
+        placeholder="Lie 2"
+      />
+    </div>
+
+    <p class="par">Your 2nd Question</p>
+    <label for="Question"></label>
+    <div>
+      <input
+        class="input-group"
+        type="text"
+        name="question2"
+        placeholder="Write your question here"
+      />
+
+      <p class="par">Answer Options</p>
+
+      <input
+        class="input-group"
+        type="text"
+        name="option2_1"
+        placeholder="Truth"
+      />
+
+      <input
+        class="input-group"
+        type="text"
+        name="option2_2"
+        placeholder="Lie 1"
+      />
+
+      <input
+        class="input-group"
+        type="text"
+        name="option2_3"
+        placeholder="Lie 2"
+      />
+    </div>
+    <button type="submit" class="question_submit">Save Quiz</button>
+  </form>
+</div>

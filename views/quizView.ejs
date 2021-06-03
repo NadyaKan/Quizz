@@ -9,25 +9,6 @@
   <div class="opacity-black-box"></div>
   <div class="allquiz-container">
     <div class="table-container">
-      <!-- <table id="quiz-table">
-      <h1><%= quiz.title %></h1>
-            
-          <% for(var i=0; i < quiz.data.length; i++) { %>
-            <tr>
-              <td id="upper" class="qa">Question:</td>
-              <td id="upper" class="questions"><%= quiz.data[i].question %></td>
-            </tr>
-            <tr>
-              <td>Answers:</td>
-              <% quiz.data[i].answer.forEach(e => { %>
-                <td id="content" class="options"><%= e.option %> : <%= e.correct %></td>
-              <% }) %> 
-            </tr>
-          <% } %>
-              
-
-      </table> -->
-
       <form action="/user/quizzes/<%= quiz._id %>" method="post">
         <% for (var i =0; i < quiz.data.length; i++ ) { %>
         <div>
@@ -56,7 +37,7 @@
         </div>
         <% } %>
         <br />
-        <button type="submit">Save</button>
+        <button type="submit">Save Edited</button>
       </form>
     </div>
   </div>

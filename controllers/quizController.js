@@ -1,27 +1,6 @@
 const Quiz = require("../models/Quiz");
 const User = require("../models/User");
 
-exports.createQuiz = (req, res) => {
-  const questions = document.getElementsByName("questions[]"); // question[0] related to answer[0]
-  const answers = document.getElementsByName("answers[]");
-  var loggedInUsername = "Larry";
-
-  User.findOne({ username: loggedInUsername }, (err, user) => {
-    Quiz.create(
-      {
-        title: "FoodQuiz",
-        creator: user._id,
-        questionData: questions,
-        answerData: answers,
-      },
-      (err) => {
-        if (err) throw err;
-      }
-    );
-  });
-};
-//TODO: this create quiz doesn't work with new schema anymore. has to be changed
-
 exports.getAllQuizzesByUserID = (req, res) => {
   let user_id = req.params.id; //  /user/:id/quizzes
   Quiz.find({ creator: user_id }, (result) => {
@@ -84,4 +63,46 @@ exports.updateQuizz = (req, res, next) => {
       console.log(`Error updating user by ID: ${error.message}`);
       return next(error);
     });
+};
+
+exports.new = (req, res) => {
+  res.render("quizNew");
+};
+
+exports.create = (req, res) => {
+  const data = [
+    {
+      question: req.body.question1,
+      answer: [
+        { option: req.body.option1_1, correct: true },
+        { option: req.body.option1_2, correct: false },
+        { option: req.body.option1_3, correct: false },
+      ],
+    },
+    {
+      question: req.body.question2,
+      answer: [
+        { option: req.body.option2_1, correct: true },
+        { option: req.body.option2_2, correct: false },
+        { option: req.body.option2_3, correct: false },
+      ],
+    },
+  ];
+
+  var loggedInMail = "larry@test.de";
+
+  User.findOne({ email: loggedInMail }, (err, user) => {
+
+    Quiz.create(
+      {
+        title: req.body.title,
+        creator: user._id,
+        data: data,
+      },
+      (err) => {
+        if (err) throw err;
+      }
+    );
+    res.redirect(`/user/${user._id}/quizzes`);
+  });
 };
