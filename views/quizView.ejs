@@ -9,8 +9,7 @@
   <div class="opacity-black-box"></div>
   <div class="allquiz-container">
     <div class="table-container">
-      
-      <table id="quiz-table">
+      <!-- <table id="quiz-table">
       <h1><%= quiz.title %></h1>
             
           <% for(var i=0; i < quiz.data.length; i++) { %>
@@ -27,9 +26,38 @@
           <% } %>
               
 
-      </table>
-      
+      </table> -->
+
+      <form action="/user/quizzes/<%= quiz._id %>" method="post">
+        <% for (var i =0; i < quiz.data.length; i++ ) { %>
+        <div>
+          <div>
+            <h1>Question: <%= i+1 %></h1>
+            <input
+              type="text"
+              name="questionData<%= i %>"
+              value="<%= quiz.data[i].question %>"
+            />
+          </div>
+          <% quiz.data[i].answer.forEach(e => { %>
+          <div>
+            <input
+              type="text"
+              name="answerOption-<%= quiz.data[i]._id %>"
+              value="<%= e.option %>"
+            />
+            <input
+              type="text"
+              name="answerCorrect-<%= quiz.data[i]._id %>"
+              value="<%= e.correct %>"
+            />
+          </div>
+          <% }) %>
+        </div>
+        <% } %>
+        <br />
+        <button type="submit">Save</button>
+      </form>
     </div>
   </div>
-  
 </body>
