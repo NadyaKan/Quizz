@@ -9,27 +9,36 @@
   <div class="opacity-black-box"></div>
   <div class="allquiz-container">
     <div class="table-container">
-      
-      <table id="quiz-table">
-      <h1><%= quiz.title %></h1>
-            
-          <% for(var i=0; i < quiz.data.length; i++) { %>
-            <tr>
-              <td id="upper" class="qa">Question:</td>
-              <td id="upper" class="questions"><%= quiz.data[i].question %></td>
-            </tr>
-            <tr>
-              <td>Answers:</td>
-              <% quiz.data[i].answer.forEach(e => { %>
-                <td id="content" class="options"><%= e.option %> : <%= e.correct %></td>
-              <% }) %> 
-            </tr>
-          <% } %>
-              
-
-      </table>
-      
+      <form action="/user/quizzes/<%= quiz._id %>" method="post">
+        <% for (var i =0; i < quiz.data.length; i++ ) { %>
+        <div>
+          <div>
+            <h1>Question: <%= i+1 %></h1>
+            <input
+              type="text"
+              name="questionData<%= i %>"
+              value="<%= quiz.data[i].question %>"
+            />
+          </div>
+          <% quiz.data[i].answer.forEach(e => { %>
+          <div>
+            <input
+              type="text"
+              name="answerOption-<%= quiz.data[i]._id %>"
+              value="<%= e.option %>"
+            />
+            <input
+              type="text"
+              name="answerCorrect-<%= quiz.data[i]._id %>"
+              value="<%= e.correct %>"
+            />
+          </div>
+          <% }) %>
+        </div>
+        <% } %>
+        <br />
+        <button type="submit">Save Edited</button>
+      </form>
     </div>
   </div>
-  
 </body>

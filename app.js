@@ -40,7 +40,11 @@ app.get("/addquiz", dummyController.createDummyQuiz); //quiz erstellen und user 
 app.get("/getuser/:username", dummyController.getUserByName); //user ausgeben
 
 app.get("/user/:userid/quizzes", dummyController.getAllQuizzesFromUser); //alle erstellten quizze von user abrufen
+app.get("/user/quizzes/new", quizController.new);
+app.post("/user/quizzes/create", quizController.create);
+
 app.get("/user/quizzes/:id", quizController.showQuiz);
+app.post("/user/quizzes/:id", quizController.updateQuizz);
 
 app.get("/user/:userId/remove-quizzes", quizController.removeAllQuizzes);
 app.get("/quiz/:quizId/remove-quiz", quizController.removeQuizById);
