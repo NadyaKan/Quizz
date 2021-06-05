@@ -18,12 +18,12 @@ exports.doRegister = function(req, res) {
     User.register(newUser, req.body.user_password, function(err, user) {
       if (err) {
         console.log(err);
-        return res.render('auth');
+        return res.redirect('/auth');
       }
   
       req.login(user, err => {
         if (err) throw err;
-        else res.render('hub');
+        else res.redirect('/hub');
       });
     });
   };

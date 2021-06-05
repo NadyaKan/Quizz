@@ -49,6 +49,7 @@ passport.deserializeUser(UserModel.deserializeUser());
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 app.use(function(req,res,next){
   res.locals.login = req.isAuthenticated();
   res.locals.currentUser = req.user;
@@ -80,6 +81,7 @@ app.post('/login', (req, res, next) => {
 
   })(req, res, next);
 });
+
 
 app.get("/hub", connectEnsureLogin.ensureLoggedIn(), routeController.getHub);
 app.get("/user", userController.show);

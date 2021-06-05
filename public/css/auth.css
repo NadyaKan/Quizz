@@ -144,3 +144,7 @@ h4 {
   color: white;
   top: 35vh;
 }
+
+.filler{
+  visibility: hidden;
+}

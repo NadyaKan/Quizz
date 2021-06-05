@@ -2,7 +2,7 @@
 <head>
   <title>Get Started!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/css/getstarted.css" type="text/css" />
+  <link rel="stylesheet" href="/css/auth.css" type="text/css" />
 </head>
 <body>
   <img src="/img/index-bg.jpg" alt="minimalistic shapes" />
@@ -27,8 +27,10 @@
     <form method="POST" action="/login">
       <h1>Log in</h1>
       <div class="signup-fields">
+        <input type="text" class="filler"/>
         <input type="email" id="email" name="email_address" placeholder="E-mail" required/>
         <input type="password" id="password" name="user_password" placeholder="Password" required/>
+        <input type="text" class="filler"/>
         <input type="submit" id="login_submit" name="login_submit" value="Enter" />
       </div>
     </form>
