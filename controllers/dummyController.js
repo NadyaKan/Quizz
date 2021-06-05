@@ -1,13 +1,13 @@
 const { render } = require("../app");
 const Quiz = require("../models/Quiz");
-const User = require("../models/User");
+const User = require("../models/UserModel");
 
 exports.createDummyUser = (req, res) => {
   User.create(
     {
       username: "Larry",
-      email: "larry@test.de",
-      password: "larry123",
+      email_adress: "larry@test.de",
+      user_password: "larry123",
       date: new Date().toLocaleDateString(),
     },
     (err) => {

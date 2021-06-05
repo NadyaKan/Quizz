@@ -185,3 +185,11 @@ a{
   color: black;
 }
 
+#loggedInAs{
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  height: 5vh;
+  top: 0px;
+  color: white;
+}

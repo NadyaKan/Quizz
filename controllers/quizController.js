@@ -1,5 +1,5 @@
 const Quiz = require("../models/Quiz");
-const User = require("../models/User");
+const User = require("../models/UserModel");
 
 exports.getAllQuizzesByUserID = (req, res) => {
   let user_id = req.params.id; //  /user/:id/quizzes

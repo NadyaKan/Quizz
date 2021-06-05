@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Quiz = require("./Quiz");
 mongoose.pluralize(null);
+var passportLocalMongoose = require("passport-local-mongoose");
 
 const userSchema = Schema({
   _id: {
@@ -12,12 +13,12 @@ const userSchema = Schema({
     type: String,
     required: [true, "Name is required!"],
   },
-  email: {
+  email_address: {
     type: String,
     required: [true, "Email is required!"],
     unique: true,
   },
-  password: {
+  user_password: {
     type: String,
     required: [true, "You need to enter a password!"],
     minLength: [6, "Password must be at least 6 characters long!"],
@@ -27,10 +28,11 @@ const userSchema = Schema({
   },
 });
 
-userSchema.path("email").validate(async (email) => {
-  const emailCount = await mongoose.models.User.countDocuments({ email });
-  return !emailCount;
-}, "This Email is already being used. Please use another email!");
+userSchema.plugin(passportLocalMongoose, {
+  usernameField: 'email_address',
+  passwordField: 'user_password'
+});
+
 
 userSchema.methods.getUsername = () => {
   return this.username;

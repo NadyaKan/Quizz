@@ -8,6 +8,13 @@
   <img src="/img/index-bg.jpg" alt="minimalistic shapes" />
   <div class="opacity-black-box"></div>
   <div class="topbar-hub"></div>
+
+  <div id="loggedInAs">
+    <form method="POST" action="/logout?_method=DELETE">
+    <button type="submit">Logout</button>
+  </form>
+    Logged in as: <%= currentUser.username %>
+  </div>
   <div class="menu-container">
     <div class="Settings">
       <h1 class="small-section">SETTINGS</h1>

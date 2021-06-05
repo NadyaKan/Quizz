@@ -1,27 +1,34 @@
-const { PERMANENT_REDIRECT } = require('http-status-codes');
-const User = require('../models/User');
+const User = require('../models/UserModel');
 
 
 exports.setup = (req, res) => {
-        res.render('getstarted', {typo: ''});
+        res.render('auth');
 }
 
-
-exports.create = (req, res) => {
-    User.create({
-            username: req.body.username,
-            email: req.body.email,
-            password: req.body.password,
-            date: new Date().toLocaleDateString(), 
-        }, (err) => {
-            if(err) res.status(400).render('getstarted', {typo: err.message})
-            else res.status(200).render('welcome', {name: req.body.username});
-        })      
-    
-}
+exports.doRegister = function(req, res) {
+    console.log(req.body.email_address);
+  
+    const newUser = new User({
+      username: req.body.username,
+      email_address: req.body.email_address,
+      user_password: req.body.user_password,
+      date: new Date().toLocaleDateString()
+    });
+  
+    User.register(newUser, req.body.user_password, function(err, user) {
+      if (err) {
+        console.log(err);
+        return res.render('auth');
+      }
+  
+      req.login(user, err => {
+        if (err) throw err;
+        else res.render('hub');
+      });
+    });
+  };
 
 exports.show = (req, res) =>  {
-    console.log(req.params.id);
     let query = null;
     if(req.params.id === undefined)
         query = {}
