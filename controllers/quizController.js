@@ -1,10 +1,10 @@
 const Quiz = require("../models/Quiz");
 const User = require("../models/UserModel");
 
-exports.getAllQuizzesByUserID = (req, res) => {
-  let user_id = req.params.id; //  /user/:id/quizzes
-  Quiz.find({ creator: user_id }, (result) => {
-    res.send(result);
+exports.getAllQuizzes = (req, res) => {
+  Quiz.find({_id: req.params.id}, (err, result) => {
+    if (err) throw err;
+    res.status(200).render("quizOverview", { quizzes: result });
   });
 };
 
@@ -106,3 +106,4 @@ exports.create = (req, res) => {
     res.redirect(`/user/${user._id}/quizzes`);
   });
 };
+

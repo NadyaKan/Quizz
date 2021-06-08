@@ -90,6 +90,7 @@ app.get("/user/:id", userController.show);
 app.get("/user/:id/edit", userController.edit);
 app.put("/user/:id/update", userController.update);
 app.get("/user/:id/remove", userController.removeUser);
+app.get('/:id/library', connectEnsureLogin.ensureLoggedIn(), quizController.getAllQuizzes);
 
 
 //dummy

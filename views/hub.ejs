@@ -15,18 +15,18 @@
   </form>
     Logged in as: <%= currentUser.username %>
   </div>
-  <div class="menu-container" onclick="location.href='/profile';">
-    <div class="Profile">
-      <a href="/profile"><h1 class="small-section">PROFILE</h1></a>
+  <div class="menu-container">
+    <div class="Profile" onclick="location.href='/profile';">
+      <h1 class="small-section">PROFILE</h1>
     </div>
-    <div class="Library" onclick="location.href='/quizlib';">
-      <a href="/quizlib"><h1 class="small-section">QUIZ LIBRARY</h1></a>
+    <div class="Library" onclick="location.href='/<%= currentUser._id %>/library';">
+      <h1 class="small-section">QUIZ LIBRARY</h1>
     </div>
     <div class="Enter-Code">
       <h1 id="top-word1" class="large-section">ENTER</h1>
       <h1 class="large-section">CODE</h1>
     </div>
-    <div class="Create-Quiz">
+    <div class="Create-Quiz"  onclick="location.href='/new-quiz';">
       <h1 id="top-word2" class="large-section">CREATE</h1>
       <h1 class="large-section">A</h1>
       <h1 class="large-section">NEW</h1>
