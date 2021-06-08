@@ -99,3 +99,7 @@ exports.removeUser = (req, res) => {
     })
 }
 
+exports.getProfile = (req, res) => {
+    res.status(200).render('updateUser');
+}
+

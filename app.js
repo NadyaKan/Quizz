@@ -85,6 +85,7 @@ app.post('/login', (req, res, next) => {
 
 app.get("/hub", connectEnsureLogin.ensureLoggedIn(), routeController.getHub);
 app.get("/user", userController.show);
+app.get("/profile",connectEnsureLogin.ensureLoggedIn(), userController.getProfile);
 app.get("/user/:id", userController.show);
 app.get("/user/:id/edit", userController.edit);
 app.put("/user/:id/update", userController.update);

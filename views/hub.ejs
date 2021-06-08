@@ -15,11 +15,11 @@
   </form>
     Logged in as: <%= currentUser.username %>
   </div>
-  <div class="menu-container">
-    <div class="Settings">
-      <h1 class="small-section">SETTINGS</h1>
+  <div class="menu-container" onclick="location.href='/profile';">
+    <div class="Profile">
+      <a href="/profile"><h1 class="small-section">PROFILE</h1></a>
     </div>
-    <div class="Profile" onclick="location.href='/quizlib';">
+    <div class="Library" onclick="location.href='/quizlib';">
       <a href="/quizlib"><h1 class="small-section">QUIZ LIBRARY</h1></a>
     </div>
     <div class="Enter-Code">

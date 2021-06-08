@@ -15,6 +15,7 @@ img {
   z-index: 1;
 }
 
+
 .opacity-black-box {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.109);
@@ -61,15 +62,15 @@ img {
   grid-template-rows: 1fr 1fr;
   gap: 0px 0px;
   grid-template-areas:
-    "Settings Enter-Code Create-Quiz"
-    "Profile Enter-Code Create-Quiz";
+    "Profile Enter-Code Create-Quiz"
+    "Library Enter-Code Create-Quiz";
   z-index: 3;
   top: 5vh;
 }
 
-.Settings {
-  grid-area: Settings;
-  background-color: rgba(255, 255, 255, 0.315);
+.Profile {
+  grid-area: Profile;
+  background-color: rgba(124, 124, 124, 0.45);
   margin: 3vh;
   float: left;
   padding: 10px;
@@ -84,9 +85,9 @@ img {
   margin-bottom: -1vh;
 }
 
-.Profile {
-  grid-area: Profile;
-  background-color: rgba(255, 255, 255, 0.315);
+.Library {
+  grid-area: Library;
+  background-color: rgba(119, 155, 255, 0.45);
   margin: 3vh;
   float: left;
   padding: 10px;
@@ -103,7 +104,7 @@ img {
 
 .Enter-Code {
   grid-area: Enter-Code;
-  background-color: rgba(255, 255, 255, 0.315);
+  background-color: rgba(255, 189, 104, 0.45);
   margin: 3vh;
   float: left;
   padding: 10px;
@@ -119,7 +120,7 @@ img {
 
 .Create-Quiz {
   grid-area: Create-Quiz;
-  background-color: rgba(255, 255, 255, 0.315);
+  background-color: rgba(130, 255, 119, 0.45);
   margin: 3vh;
   float: left;
   padding: 10px;
@@ -148,17 +149,17 @@ img {
   margin-top: 15vh;
 }
 
-.Settings:hover {
+.Profile:hover {
   box-shadow: 0 5px 15px rgb(124, 124, 124);
-  background-color: rgba(124, 124, 124, 0.486);
+  background-color: rgba(154, 154, 154, 0.6);
   border: 1px solid rgb(124, 124, 124);
   font-size: 3.5vh;
   cursor: pointer;
 }
 
-.Profile:hover {
+.Library:hover {
   box-shadow: 0 5px 15px rgb(119, 156, 255);
-  background-color: rgba(119, 155, 255, 0.384);
+  background-color: rgba(139, 175, 255, 0.6);
   border: 1px solid rgb(119, 156, 255);
   font-size: 3.5vh;
   cursor: pointer;
@@ -166,7 +167,7 @@ img {
 
 .Enter-Code:hover {
   box-shadow: 0 5px 15px rgb(255, 189, 104);
-  background-color: rgba(255, 189, 104, 0.384);
+  background-color: rgba(255, 209, 124, 0.6);
   border: 1px solid rgb(255, 189, 104);
   font-size: 3.5vh;
   cursor: pointer;
@@ -174,7 +175,7 @@ img {
 
 .Create-Quiz:hover {
   box-shadow: 0 5px 15px rgb(130, 255, 119);
-  background-color: rgba(130, 255, 119, 0.384);
+  background-color: rgba(160, 255, 139, 0.6);
   border: 1px solid rgb(130, 255, 119);
   font-size: 3.5vh;
   cursor: pointer;
