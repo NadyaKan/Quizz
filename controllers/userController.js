@@ -6,8 +6,6 @@ exports.setup = (req, res) => {
 }
 
 exports.doRegister = function(req, res) {
-    console.log(req.body.email_address);
-  
     const newUser = new User({
       username: req.body.username,
       email_address: req.body.email_address,
