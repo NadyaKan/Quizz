@@ -7,8 +7,7 @@ const bcrypt = require('bcryptjs');
 
 const userSchema = Schema({
   _id: {
-    type: mongoose.Types.ObjectId,
-    default: new mongoose.Types.ObjectId(),
+    type: mongoose.Types.ObjectId
   },
   username: {
     type: String,
@@ -25,8 +24,7 @@ const userSchema = Schema({
     minLength: [6, "Password must be at least 6 characters long!"],
   },
   date: {
-    type: Date,
-    default: Date.now
+    type: Date
   },
 });
 

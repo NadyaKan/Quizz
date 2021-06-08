@@ -1,19 +1,20 @@
-const User = require('../models/UserModel');
-
+const UserModel = require('../models/UserModel');
+const mongoose = require('mongoose');
 
 exports.setup = (req, res) => {
         res.render('auth');
 }
 
 exports.doRegister = function(req, res) {
-    const newUser = new User({
+    const newUser = new UserModel({
+      _id: new mongoose.Types.ObjectId(),
       username: req.body.username,
       email_address: req.body.email_address,
       user_password: req.body.user_password,
       date: new Date().toLocaleDateString()
     });
   
-    User.register(newUser, req.body.user_password, function(err, user) {
+    UserModel.register(newUser, req.body.user_password, function(err, user) {
       if (err) {
         console.log(err);
         return res.redirect('/auth');
@@ -31,7 +32,7 @@ exports.show = (req, res) =>  {
     if(req.params.id === undefined)
         query = {}
     else query = {_id: req.params.id}
-    User.find(query).then(users => {
+    UserModel.find(query).then(users => {
         res.render("userOverview", {all: users})})
         .catch(error => {
             if(error) throw error;
@@ -40,7 +41,7 @@ exports.show = (req, res) =>  {
 
 exports.edit = (req, res, next) => {
     let userId = req.params.id;  
-    User.findById(userId).then(user => {
+    UserModel.findById(userId).then(user => {
         res.render("updateUser", {user: user});
     }).catch(error => {
         console.log(`Error fetching user by ID: ${error.message}`);
@@ -55,7 +56,7 @@ exports.update = (req, res, next) => {
                 email: req.body.email,
                 password: req.body.password   
             };
-    User.findByIdAndUpdate(
+    UserModel.findByIdAndUpdate(
         userId, {    
         $set: userParams  })
         .then(() => {
@@ -72,20 +73,20 @@ exports.update = (req, res, next) => {
 
 
 exports.clearUsers = (req, res) => {
-    User.remove({}, () => {
+    UserModel.remove({}, () => {
         console.log('all users removed successfully')
     });
 }
 
 exports.getUserById = (req, res) => {
-    User.findOne({id: req.params.id}, (err, user) => {
+    UserModel.findOne({id: req.params.id}, (err, user) => {
         if(err) console.log('user not found');
         res.send(user); // just sending back for now
     })
 }
 
 exports.getUserByName = (req, res) => {
-    User.findOne({username: req.params.username}, (err, user) => {
+    UserModel.findOne({username: req.params.username}, (err, user) => {
         if(err) console.log('user not found');
         res.send(user); // just sending back for now
     })
@@ -93,7 +94,7 @@ exports.getUserByName = (req, res) => {
 
 
 exports.removeUser = (req, res) => {
-    User.remove({id: req.params.id}, () => {
+    UserModel.remove({id: req.params.id}, () => {
         res.status(200).render('index'); 
     })
 }

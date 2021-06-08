@@ -13,8 +13,8 @@
       <div class="update-fields">
         <input type="text" name="_id" id="userId" value="<%= user.id %>"  readonly>
         <input type="text" name="username" id="username" placeholder="Username" value="<%= user.username %>" />
-        <input type="text" name="email" id="email" placeholder="E-mail" value="<%= user.email %>" autofocus/>
-        <input type="password" name="password" id="password" placeholder="Password" value="<%= user.password %>"/>
+        <input type="text" name="email" id="email" placeholder="E-mail" value="<%= user.email_address %>" autofocus/>
+        <input type="password" name="password" id="password" placeholder="Password" value="<%= user.user_password %>"/>
         <input type="submit" name="submit_edit" value="Update" />
       </div>
     </form>
