@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<head>
+  <title>Welcome</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/newquiz.css" type="text/css" />
+</head>
+<body>
+  <img src="/img/index-bg.jpg" alt="minimalistic shapes" />
+  <div class="opacity-black-box"></div>
+  
+  <div class="main-wrapper">
+    <form method="POST" action="/<%= currentUser._id %>/create-quiz">
+    
+    <input id="title" type="text" name="title" placeholder="Quiz Title..">
+    
+    <div class="qaWrapper">
+      <div class="container1">
+        <button class="add_form_field">Add New Field &nbsp; <span style="font-size:16px; font-weight:bold;">+ </span></button>
+
+          <div class="qaBundle">
+            <label id="question-label" for="question">Question:</label>
+              <input type="text" name="[block][question]" id="question" placeholder="What is my favourite food Pizza?"><br>
+            <label id="answers-label" for="answers">Answers:</label>
+              <input class="answer" name="[block][question][answer][option]" placeholder="Yes">
+              <input type="radio" name="[block][question][correct]" value="0">
+              <input class="answer" name="[block][question][answer][option]" placeholder="No">
+              <input type="radio" name="[block][question][correct]" value="1">
+          </div>
+        </div>
+      </div>
+      <!--
+    data
+      question
+        question 1 
+          answers
+            option 1
+            option 2
+            option 3
+            true: 1
+        question 2
+          answers
+          ..
+
+-->
+    
+    
+    <button type="submit">Create</button>
+    </form>
+  </div>
+
+    
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    var max_fields      = 10;
+    var wrapper         = $(".container1");
+    var add_button      = $(".add_form_field");
+ 
+    var x = 1;
+    $(add_button).click(function(e){
+        e.preventDefault();
+        if(x < max_fields){
+            x++;
+            $(wrapper).append(`
+            <div class="qaBundle">
+            <label id="question-label" for="question">Question:</label>
+              <input type="text" name="[block][question]" id="question" placeholder="What is my favourite food Pizza?"><br>
+            <label id="answers-label" for="answers">Answers:</label>
+              <input class="answer" name="[block][question][answer][option]" placeholder="Yes">
+              <input type="radio" name="[block][question][correct]" value="0">
+              <input class="answer" name="[block][question][answer][option]" placeholder="No">
+              <input type="radio" name="[block][question][correct]" value="1">
+          </div>
+            `); //add input box
+        }
+  else
+  {
+  alert('You Reached the limits')
+  }
+    });
+ 
+    $(wrapper).on("click",".delete", function(e){
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+});
+</script>
+

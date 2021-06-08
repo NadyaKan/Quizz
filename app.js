@@ -91,6 +91,8 @@ app.get("/user/:id/edit", userController.edit);
 app.put("/user/:id/update", userController.update);
 app.get("/user/:id/remove", userController.removeUser);
 app.get('/:id/library', connectEnsureLogin.ensureLoggedIn(), quizController.getAllQuizzes);
+app.get('/new-quiz',connectEnsureLogin.ensureLoggedIn(), quizController.getNewQuiz);
+app.post('/:id/create-quiz', quizController.createNewQuiz);
 
 
 //dummy

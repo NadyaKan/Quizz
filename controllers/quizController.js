@@ -1,6 +1,20 @@
 const Quiz = require("../models/Quiz");
 const User = require("../models/UserModel");
 
+
+exports.getNewQuiz = (req, res) => {
+  res.status(200).render('newQuiz');
+}
+
+exports.createNewQuiz = (req, res) => {
+  let formData = req.body.block;
+
+ 
+
+ res.send(formData);
+  
+}
+
 exports.getAllQuizzes = (req, res) => {
   Quiz.find({_id: req.params.id}, (err, result) => {
     if (err) throw err;
