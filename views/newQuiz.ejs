@@ -9,9 +9,9 @@
   <div class="opacity-black-box"></div>
   
   <div class="main-wrapper">
-    <form method="POST" action="/<%= currentUser._id %>/create-quiz">
+    <form method="POST" action="/quiz/<%= currentUser._id %>/create">
     
-    <input id="title" type="text" name="title" placeholder="Quiz Title..">
+    <input id="title" type="text" name="title" placeholder="Quiz Title.." required/>
     
     <div class="qaWrapper">
       <div>
@@ -27,10 +27,10 @@
               <input type="text" name="questions[0]" id="question" placeholder="What is my favourite food Pizza?">
             </div>
             <div id="answer-section">
-                <input class="answer" name="answers[0]" placeholder="Answer 1">
-                <input type="radio" name="[correct][0]" value="0"><br>
-                <input class="answer" name="answers[0]" placeholder="Answer 2">
-                <input type="radio" name="[correct][0]" value="1">
+                <input class="answer" name="answers[0]" placeholder="Answer 1" required/>
+                <input type="radio" name="[correct][0]" value="0" required/><br>
+                <input class="answer" name="answers[0]" placeholder="Answer 2" required/>
+                <input type="radio" name="[correct][0]" value="1" required/>
             </div>
           </div>
         

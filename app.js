@@ -3,14 +3,10 @@ const express = require("express"),
   layouts = require("express-ejs-layouts"),
   logController = require("./controllers/logController"),
   errorController = require("./controllers/errorController"),
-  dummyController = require("./controllers/dummyController"),
-  routeController = require("./controllers/routeController"),
-  userController = require("./controllers/userController"),
-  quizController = require("./controllers/quizController"),
   methodOverride = require("method-override"),
   passport = require("passport"),
-  UserModel = require("./models/UserModel");
-  const connectEnsureLogin = require('connect-ensure-login')
+  UserModel = require("./models/UserModel"),
+  routes = require('./routes')(express)
 ;
 
 
@@ -53,57 +49,7 @@ app.use(function(req,res,next){
   next();
 })
 
-//routes
-app.get("/", routeController.getIndexPage);
-app.get("/auth", userController.setup);
-app.get("/login", userController.setup);
-
-app.post("/register", userController.doRegister);
-app.post('/login', (req, res, next) => {
-  passport.authenticate('local',
-  (err, user, info) => {
-    if (err) {
-      return next(err);
-    }
-    if (!user) {
-      console.log(info);
-      return res.redirect('/');
-    }
-    req.logIn(user, function(err) {
-      if (err) {
-        return next(err);
-      }
-      return res.redirect('/hub');
-    });
-
-  })(req, res, next);
-});
-
-
-app.get("/hub", connectEnsureLogin.ensureLoggedIn(), routeController.getHub);
-app.get("/user", userController.show);
-app.get("/profile",connectEnsureLogin.ensureLoggedIn(), userController.getProfile);
-app.get("/user/:id", userController.show);
-app.get("/user/:id/edit", userController.edit);
-app.put("/user/:id/update", userController.update);
-app.get("/user/:id/remove", userController.removeUser);
-app.get('/:id/library', connectEnsureLogin.ensureLoggedIn(), quizController.getAllQuizzes);
-app.get('/new-quiz',connectEnsureLogin.ensureLoggedIn(), quizController.getNewQuiz);
-app.post('/:id/create-quiz', quizController.createNewQuiz);
-app.get("/quiz/:id", quizController.showQuiz);
-
-
-app.post("/user/quizzes/:id", quizController.updateQuizz);
-app.get("/user/:userId/remove-quizzes", quizController.removeAllQuizzes);
-app.get("/quiz/:quizId/remove-quiz", quizController.removeQuizById);
-app.get("/clear", dummyController.clear);
-
-app.delete("/logout", function(req, res){
-  req.logOut();
-  res.redirect("/");
-});
-
-
+app.use('/', routes);
 
 //after middleware
 app.use(errorController.respondNoResourceFound);

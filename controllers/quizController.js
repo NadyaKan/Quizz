@@ -30,7 +30,7 @@ exports.createNewQuiz = (req, res) => {
       if (err) throw err;
     }
   );
-  res.redirect(`/${req.params.id}/library`);
+  res.redirect(`/quiz/library/${req.params.id}`);
 
 }
 

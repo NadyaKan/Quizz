@@ -61,7 +61,7 @@ exports.update = (req, res, next) => {
         userId, {    
         $set: userParams  })
         .then(() => {
-            res.redirect(`/user/${userId}`);
+            res.redirect(`/hub`);
             next();
         })
         .catch(error => {
