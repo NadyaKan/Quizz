@@ -7,11 +7,7 @@ exports.getNewQuiz = (req, res) => {
 }
 
 exports.createNewQuiz = (req, res) => {
-  let formData = req.body.block;
-
- 
-
- res.send(formData);
+  res.send(req.body);
   
 }
 

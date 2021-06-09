@@ -19,13 +19,14 @@
 
           <div class="qaBundle">
             <label id="question-label" for="question">Question:</label>
-              <input type="text" name="[block][question]" id="question" placeholder="What is my favourite food Pizza?"><br>
+              <input type="text" name="questions[0]" id="question" placeholder="What is my favourite food Pizza?"><br>
             <label id="answers-label" for="answers">Answers:</label>
-              <input class="answer" name="[block][question][answer][option]" placeholder="Yes">
-              <input type="radio" name="[block][question][correct]" value="0">
-              <input class="answer" name="[block][question][answer][option]" placeholder="No">
-              <input type="radio" name="[block][question][correct]" value="1">
+              <input class="answer" name="answers[0]" placeholder="Answer 1">
+              <input type="radio" name="answers[0][correct]" value="0">
+              <input class="answer" name="answers[0]" placeholder="Answer 2">
+              <input type="radio" name="answers[0][correct]" value="1">
           </div>
+
         </div>
       </div>
       <!--
@@ -57,21 +58,23 @@ $(document).ready(function() {
     var max_fields      = 10;
     var wrapper         = $(".container1");
     var add_button      = $(".add_form_field");
- 
+    var index = 0;
     var x = 1;
     $(add_button).click(function(e){
         e.preventDefault();
         if(x < max_fields){
             x++;
+            index++;
+
             $(wrapper).append(`
             <div class="qaBundle">
             <label id="question-label" for="question">Question:</label>
-              <input type="text" name="[block][question]" id="question" placeholder="What is my favourite food Pizza?"><br>
+              <input type="text" name="questions[${index}]" id="question" placeholder="What is my favourite food Pizza?"><br>
             <label id="answers-label" for="answers">Answers:</label>
-              <input class="answer" name="[block][question][answer][option]" placeholder="Yes">
-              <input type="radio" name="[block][question][correct]" value="0">
-              <input class="answer" name="[block][question][answer][option]" placeholder="No">
-              <input type="radio" name="[block][question][correct]" value="1">
+              <input class="answer" name="answers[${index}]" placeholder="Answer 1">
+              <input type="radio" name="answers[${index}][correct]" value="0">
+              <input class="answer" name="answers[${index}]" placeholder="Answer 2">
+              <input type="radio" name="answers[${index}][correct]" value="1">
           </div>
             `); //add input box
         }
