@@ -71,10 +71,59 @@ body {
 
 .answer{
   font-size: 3.5vh;
-  margin-left: 2vh;
-  width: 30vh;
+  width: 50vh;
+  margin-top: 2vh;
 }
 
 .qaBundle{
   margin-top: 2vh;
+}
+
+.qaTable{
+  width: 100%;
+  border-collapse: collapse;
+  height: auto;
+}
+
+th{
+  width: 50%;
+  font-size: 3vh;
+  padding-left: 7.5vh;
+}
+
+.block{
+  position: relative;
+  height: 15vh;
+  background-color: rgba(0, 0, 0, 0.09);
+  border-radius: 50px;
+  margin-top: 1vh;
+}
+
+#question-section{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#answer-section{
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  left: 50%;
+  top: 0px;
+  text-align: center;
+}
+
+input[type=radio]{
+  width: 3vh;
+  height: 3vh;
+  margin-left: 1vh;
+}
+
+.add_form_field{
+  margin-bottom: 2vh;
+  font-size: 2vh;
 }

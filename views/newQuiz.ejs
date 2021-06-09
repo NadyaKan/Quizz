@@ -14,25 +14,44 @@
     <input id="title" type="text" name="title" placeholder="Quiz Title..">
     
     <div class="qaWrapper">
-      <div class="container1">
+      <div>
         <button class="add_form_field">Add New Field &nbsp; <span style="font-size:16px; font-weight:bold;">+ </span></button>
-
-          <div class="qaBundle">
-            <label id="question-label" for="question">Question:</label>
-              <input type="text" name="questions[0]" id="question" placeholder="What is my favourite food Pizza?"><br>
-            <label id="answers-label" for="answers">Answers:</label>
-              <input class="answer" name="answers[0]" placeholder="Answer 1">
-              <input type="radio" name="[correct][0]" value="0">
-              <input class="answer" name="answers[0]" placeholder="Answer 2">
-              <input type="radio" name="[correct][0]" value="1">
+        <table class="qaTable">
+          <thead>
+              <th>Questions</th>
+              <th>Answers</th>
+          </thead>
+        </table>
+          <div class="block container1">
+            <div id="question-section">
+              <input type="text" name="questions[0]" id="question" placeholder="What is my favourite food Pizza?">
+            </div>
+            <div id="answer-section">
+                <input class="answer" name="answers[0]" placeholder="Answer 1">
+                <input type="radio" name="[correct][0]" value="0"><br>
+                <input class="answer" name="answers[0]" placeholder="Answer 2">
+                <input type="radio" name="[correct][0]" value="1">
+            </div>
           </div>
+        
 
-        </div>
       </div>
+    </div>
 
     <button type="submit">Create</button>
     </form>
   </div>
+<!--
+  <div class="qaBundle">
+                <label id="question-label" for="question">Question:</label>
+                  <input type="text" name="questions[0]" id="question" placeholder="What is my favourite food Pizza?"><br>
+                <label id="answers-label" for="answers">Answers:</label>
+                  <input class="answer" name="answers[0]" placeholder="Answer 1">
+                  <input type="radio" name="[correct][0]" value="0">
+                  <input class="answer" name="answers[0]" placeholder="Answer 2">
+                  <input type="radio" name="[correct][0]" value="1">
+              </div>
+-->
 
     
 </body>
@@ -52,14 +71,16 @@ $(document).ready(function() {
             index++;
 
             $(wrapper).append(`
-            <div class="qaBundle">
-            <label id="question-label" for="question">Question:</label>
-              <input type="text" name="questions[${index}]" id="question" placeholder="New Awsome Question.."><br>
-            <label id="answers-label" for="answers">Answers:</label>
-              <input class="answer" name="answers[${index}]" placeholder="Answer 1">
-              <input type="radio" name="[correct][${index}]" value="0">
-              <input class="answer" name="answers[${index}]" placeholder="Answer 2">
-              <input type="radio" name="[correct][${index}]" value="1">
+            <div class="block">
+            <div id="question-section">
+              <input type="text" name="questions[${index}]" id="question" placeholder="What is my favourite food Pizza?">
+            </div>
+            <div id="answer-section">
+                <input class="answer" name="answers[${index}]" placeholder="Answer 1">
+                <input type="radio" name="[correct][${index}]" value="0"><br>
+                <input class="answer" name="answers[${index}]" placeholder="Answer 2">
+                <input type="radio" name="[correct][${index}]" value="1">
+            </div>
           </div>
             `); //add input box
         }
