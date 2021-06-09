@@ -1,6 +1,7 @@
 const UserModel = require('../models/UserModel');
 const mongoose = require('mongoose');
 
+
 exports.setup = (req, res) => {
         res.render('auth');
 }
@@ -70,28 +71,6 @@ exports.update = (req, res, next) => {
     );
     
 }
-
-
-exports.clearUsers = (req, res) => {
-    UserModel.remove({}, () => {
-        console.log('all users removed successfully')
-    });
-}
-
-exports.getUserById = (req, res) => {
-    UserModel.findOne({id: req.params.id}, (err, user) => {
-        if(err) console.log('user not found');
-        res.send(user); // just sending back for now
-    })
-}
-
-exports.getUserByName = (req, res) => {
-    UserModel.findOne({username: req.params.username}, (err, user) => {
-        if(err) console.log('user not found');
-        res.send(user); // just sending back for now
-    })
-}
-
 
 exports.removeUser = (req, res) => {
     UserModel.remove({id: req.params.id}, () => {

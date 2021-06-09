@@ -1,8 +1,8 @@
 const express = require("express"),
   app = express(),
   layouts = require("express-ejs-layouts"),
-  logController = require("./controllers/LogController"),
-  errorController = require("./controllers/ErrorController"),
+  logController = require("./controllers/logController"),
+  errorController = require("./controllers/errorController"),
   dummyController = require("./controllers/dummyController"),
   routeController = require("./controllers/routeController"),
   userController = require("./controllers/userController"),
@@ -10,20 +10,17 @@ const express = require("express"),
   methodOverride = require("method-override"),
   passport = require("passport"),
   UserModel = require("./models/UserModel");
+  const connectEnsureLogin = require('connect-ensure-login')
+;
 
-  const connectEnsureLogin = require('connect-ensure-login');
 
 app.use(methodOverride("_method", { methods: ["POST", "GET", "DELETE"] }));
-
 const expressSession = require('express-session')({
   secret: 'secret',
   resave: false,
   saveUninitialized: false
 });
 app.use(expressSession);
-
-
-
 
 app.use(logController.log);
 app.use(express.json());
@@ -93,16 +90,9 @@ app.get("/user/:id/remove", userController.removeUser);
 app.get('/:id/library', connectEnsureLogin.ensureLoggedIn(), quizController.getAllQuizzes);
 app.get('/new-quiz',connectEnsureLogin.ensureLoggedIn(), quizController.getNewQuiz);
 app.post('/:id/create-quiz', quizController.createNewQuiz);
+app.get("/quiz/:id", quizController.showQuiz);
 
 
-//dummy
-app.get("/adduser", dummyController.createDummyUser); //user erstellen
-app.get("/addquiz", dummyController.createDummyQuiz); //quiz erstellen und user als creator nehmen
-app.get("/getuser/:username", dummyController.getUserByName); //user ausgeben
-app.get("/user/:userid/quizzes", dummyController.getAllQuizzesFromUser); //alle erstellten quizze von user abrufen
-app.get("/user/quizzes/new", quizController.new);
-app.post("/user/quizzes/create", quizController.create);
-app.get("/user/quizzes/:id", quizController.showQuiz);
 app.post("/user/quizzes/:id", quizController.updateQuizz);
 app.get("/user/:userId/remove-quizzes", quizController.removeAllQuizzes);
 app.get("/quiz/:quizId/remove-quiz", quizController.removeQuizById);

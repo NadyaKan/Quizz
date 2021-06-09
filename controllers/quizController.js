@@ -1,5 +1,4 @@
 const Quiz = require("../models/Quiz");
-const User = require("../models/UserModel");
 
 
 exports.getNewQuiz = (req, res) => {
@@ -98,46 +97,3 @@ exports.updateQuizz = (req, res, next) => {
       return next(error);
     });
 };
-
-exports.new = (req, res) => {
-  res.render("quizNew");
-};
-
-exports.create = (req, res) => {
-  const data = [
-    {
-      question: req.body.question1,
-      answer: [
-        { option: req.body.option1_1, correct: true },
-        { option: req.body.option1_2, correct: false },
-        { option: req.body.option1_3, correct: false },
-      ],
-    },
-    {
-      question: req.body.question2,
-      answer: [
-        { option: req.body.option2_1, correct: true },
-        { option: req.body.option2_2, correct: false },
-        { option: req.body.option2_3, correct: false },
-      ],
-    },
-  ];
-
-  var loggedInMail = "larry@test.de";
-
-  User.findOne({ email: loggedInMail }, (err, user) => {
-
-    Quiz.create(
-      {
-        title: req.body.title,
-        creator: user._id,
-        data: data,
-      },
-      (err) => {
-        if (err) throw err;
-      }
-    );
-    res.redirect(`/user/${user._id}/quizzes`);
-  });
-};
-
