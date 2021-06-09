@@ -1,1 +1,20 @@
-<div class="navigation-bar"></div>
+<div class="navigation-bar">
+
+    <% if (login) { %>
+        <div id="loggedInAs">
+            <div id="logout-button-container">
+                <form method="POST" action="/user/logout?_method=DELETE">
+                    <button id="logout-button" type="submit">Logout</button>
+                </form>
+            </div>
+            <div id="back-to-hub-button-container">
+                <form method="GET" action="/hub">
+                    <button id="back-to-hub-button" type="submit">Hub</button>
+                </form>
+            </div>
+            <div id="login-username">
+                Logged in as: <p id="username-loggedIn"><%= currentUser.username %></p>
+            </div>
+        </div>
+    <% } %>
+</div>

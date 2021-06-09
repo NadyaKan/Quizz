@@ -5,7 +5,7 @@ body {
   }
   
   .navigation-bar {
-    display: none;
+    display: inline;
   }
   
   img {
@@ -31,7 +31,7 @@ body {
   height:85%;
   background-color: antiquewhite;
   z-index: 3;
-  margin: 5vh 10%;
+  margin: 7vh 10%;
   border-radius: 50px;
   overflow: auto;
 }
