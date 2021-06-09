@@ -37,7 +37,7 @@ exports.createNewQuiz = (req, res) => {
 exports.getAllQuizzes = (req, res) => {
   Quiz.find({creator: req.params.id}, (err, result) => {
     if (err) throw err;
-    res.status(200).render("quizOverview", { quizzes: result });
+    res.status(200).render("library", { quizzes: result });
   });
 };
 
