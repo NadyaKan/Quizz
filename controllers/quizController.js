@@ -7,12 +7,36 @@ exports.getNewQuiz = (req, res) => {
 }
 
 exports.createNewQuiz = (req, res) => {
-  res.send(req.body);
-  
+  const questionData = req.body.questions;
+  const answerData = req.body.answers;
+  const correct = req.body.correct;
+  var data = [];
+
+  for(var i = 0; i < questionData.length; i++){
+    let answers = []
+    answers[0] = answerData[i][0];
+    answers[1] = answerData[i][1];
+
+
+    data[i] = {question: questionData[i], answer: answers, correct: correct[i]};
+  }
+
+  Quiz.create(
+    {
+      title: req.body.title,
+      creator: req.params.id,
+      data: data,
+    },
+    (err) => {
+      if (err) throw err;
+    }
+  );
+  res.redirect(`/${req.params.id}/library`);
+
 }
 
 exports.getAllQuizzes = (req, res) => {
-  Quiz.find({_id: req.params.id}, (err, result) => {
+  Quiz.find({creator: req.params.id}, (err, result) => {
     if (err) throw err;
     res.status(200).render("quizOverview", { quizzes: result });
   });

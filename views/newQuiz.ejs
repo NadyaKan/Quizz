@@ -22,29 +22,14 @@
               <input type="text" name="questions[0]" id="question" placeholder="What is my favourite food Pizza?"><br>
             <label id="answers-label" for="answers">Answers:</label>
               <input class="answer" name="answers[0]" placeholder="Answer 1">
-              <input type="radio" name="answers[0][correct]" value="0">
+              <input type="radio" name="[correct][0]" value="0">
               <input class="answer" name="answers[0]" placeholder="Answer 2">
-              <input type="radio" name="answers[0][correct]" value="1">
+              <input type="radio" name="[correct][0]" value="1">
           </div>
 
         </div>
       </div>
-      <!--
-    data
-      question
-        question 1 
-          answers
-            option 1
-            option 2
-            option 3
-            true: 1
-        question 2
-          answers
-          ..
 
--->
-    
-    
     <button type="submit">Create</button>
     </form>
   </div>
@@ -69,12 +54,12 @@ $(document).ready(function() {
             $(wrapper).append(`
             <div class="qaBundle">
             <label id="question-label" for="question">Question:</label>
-              <input type="text" name="questions[${index}]" id="question" placeholder="What is my favourite food Pizza?"><br>
+              <input type="text" name="questions[${index}]" id="question" placeholder="New Awsome Question.."><br>
             <label id="answers-label" for="answers">Answers:</label>
               <input class="answer" name="answers[${index}]" placeholder="Answer 1">
-              <input type="radio" name="answers[${index}][correct]" value="0">
+              <input type="radio" name="[correct][${index}]" value="0">
               <input class="answer" name="answers[${index}]" placeholder="Answer 2">
-              <input type="radio" name="answers[${index}][correct]" value="1">
+              <input type="radio" name="[correct][${index}]" value="1">
           </div>
             `); //add input box
         }
