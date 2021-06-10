@@ -1,9 +1,8 @@
 const Quiz = require("../models/Quiz");
 
-
 exports.getNewQuiz = (req, res) => {
-  res.status(200).render('newQuiz');
-}
+  res.status(200).render("newQuiz");
+};
 
 exports.createNewQuiz = (req, res) => {
   const questionData = req.body.questions;
@@ -11,13 +10,16 @@ exports.createNewQuiz = (req, res) => {
   const correct = req.body.correct;
   var data = [];
 
-  for(var i = 0; i < questionData.length; i++){
-    let answers = []
+  for (var i = 0; i < questionData.length; i++) {
+    let answers = [];
     answers[0] = answerData[i][0];
     answers[1] = answerData[i][1];
 
-
-    data[i] = {question: questionData[i], answer: answers, correct: correct[i]};
+    data[i] = {
+      question: questionData[i],
+      answer: answers,
+      correct: correct[i],
+    };
   }
 
   Quiz.create(
@@ -28,23 +30,18 @@ exports.createNewQuiz = (req, res) => {
     },
     (err) => {
       if (err) throw err;
-      req.flash('error', 'Quiz creation failed..')
+      req.flash("error", "Quiz creation failed..");
     }
   );
-  req.flash('success', 'Quiz has been created')
+  req.flash("success", "Quiz has been created");
   res.redirect(`/quiz/library/${req.params.id}`);
-
-}
+};
 
 exports.getAllQuizzesFromUser = (req, res) => {
-  Quiz.find({creator: req.params.id}, (err, result) => {
+  Quiz.find({ creator: req.params.id }, (err, result) => {
     if (err) throw err;
-    if(req.query.format === 'json')
-      res.json(result);
-    else  
-      res.render("library", { quizzes: result });
+    res.render("library", { quizzes: result });
   });
-  
 };
 
 exports.showQuiz = (req, res) => {

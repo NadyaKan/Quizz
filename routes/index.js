@@ -5,7 +5,8 @@ module.exports = (express) => {
             quizRoutes = require('./quizRoutes'),
             maintainRoutes = require('./maintainRoutes'),
             hubRoutes = require('./hubRoutes'),
-            homeRoutes = require('./homeRoutes')
+            homeRoutes = require('./homeRoutes'),
+            apiRoutes = require('./apiRoutes')
     ;
   
     // add routes
@@ -15,6 +16,7 @@ module.exports = (express) => {
     router.use('/quiz', quizRoutes);
     router.use('/hub', hubRoutes);
     router.use('/maintain', maintainRoutes);
+    router.use('/api', apiRoutes);
   
     return router;
   }
