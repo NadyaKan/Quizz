@@ -28,8 +28,10 @@ exports.createNewQuiz = (req, res) => {
     },
     (err) => {
       if (err) throw err;
+      req.flash('error', 'Quiz creation failed..')
     }
   );
+  req.flash('success', 'Quiz has been created')
   res.redirect(`/quiz/library/${req.params.id}`);
 
 }

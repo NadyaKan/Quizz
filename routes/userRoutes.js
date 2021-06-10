@@ -13,12 +13,14 @@ router.post('/login', (req, res, next) => {
       }
       if (!user) {
         console.log(info);
-        return res.redirect('/');
+        req.flash('error', info.message);
+        return res.redirect('/user/auth');
       }
       req.logIn(user, function(err) {
         if (err) {
           return next(err);
         }
+        req.flash('success', 'Successfully logged in');
         return res.redirect('/hub');
       });
   

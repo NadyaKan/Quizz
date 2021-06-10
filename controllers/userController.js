@@ -18,12 +18,16 @@ exports.doRegister = function(req, res) {
     UserModel.register(newUser, req.body.user_password, function(err, user) {
       if (err) {
         console.log(err);
-        return res.redirect('/auth');
+        req.flash('error', 'Registration failed.');
+        return res.redirect('/user/auth');
       }
   
       req.login(user, err => {
         if (err) throw err;
-        else res.redirect('/hub');
+        else {
+            req.flash('success', 'Your account has been created successfully!');
+            res.redirect('/hub');
+        }
       });
     });
   };
@@ -61,10 +65,12 @@ exports.update = (req, res, next) => {
         userId, {    
         $set: userParams  })
         .then(() => {
+            req.flash('success', 'Profile updated')
             res.redirect(`/hub`);
             next();
         })
         .catch(error => {
+            req.flash('error', 'An error occured while updating the profile')
             console.log(`Error updating user by ID: ${error.message}`);
             next(error);
         }

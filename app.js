@@ -6,7 +6,8 @@ const express = require("express"),
   methodOverride = require("method-override"),
   passport = require("passport"),
   UserModel = require("./models/UserModel"),
-  routes = require('./routes')(express)
+  routes = require('./routes')(express),
+  flash = require('express-flash')
 ;
 
 
@@ -17,6 +18,7 @@ const expressSession = require('express-session')({
   saveUninitialized: false
 });
 app.use(expressSession);
+app.use(flash());
 
 app.use(logController.log);
 app.use(express.json());
@@ -44,6 +46,7 @@ app.use(passport.session());
 
 
 app.use(function(req,res,next){
+  res.locals.flashMessages = req.flash();
   res.locals.login = req.isAuthenticated();
   res.locals.currentUser = req.user;
   next();
