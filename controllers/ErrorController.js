@@ -4,7 +4,7 @@ exports.respondNoResourceFound = (req, res) => {
     let errorCode = httpStatus.StatusCodes.NOT_FOUND;  
     res.status(errorCode);  
     let errormsg = '404 | Not found!';
-    res.send(errormsg);
+    res.status(404).render('error', {err: errormsg});
 };
 
 exports.respondInternalError = (error, req, res, next) => {  
@@ -12,7 +12,7 @@ exports.respondInternalError = (error, req, res, next) => {
     console.log(`ERROR occurred: ${error.stack}`);
     res.status(errorCode);  
     let errormsg = '500 | Internal Error!';
-    res.send(errormsg);
+    res.status(500).render('error', {err: errormsg});
 };
 
 exports.logErrors = (error, req, res, next) => {  

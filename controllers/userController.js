@@ -1,32 +1,43 @@
-const { PERMANENT_REDIRECT } = require('http-status-codes');
-const User = require('../models/User');
+const UserModel = require('../models/UserModel');
+const mongoose = require('mongoose');
 
 
 exports.setup = (req, res) => {
-        res.render('getstarted', {typo: ''});
+        res.render('auth');
 }
 
-
-exports.create = (req, res) => {
-    User.create({
-            username: req.body.username,
-            email: req.body.email,
-            password: req.body.password,
-            date: new Date().toLocaleDateString(), 
-        }, (err) => {
-            if(err) res.status(400).render('getstarted', {typo: err.message})
-            else res.status(200).render('welcome', {name: req.body.username});
-        })      
-    
-}
+exports.doRegister = function(req, res) {
+    const newUser = new UserModel({
+      _id: new mongoose.Types.ObjectId(),
+      username: req.body.username,
+      email_address: req.body.email_address,
+      user_password: req.body.user_password,
+      date: new Date().toLocaleDateString()
+    });
+  
+    UserModel.register(newUser, req.body.user_password, function(err, user) {
+      if (err) {
+        console.log(err);
+        req.flash('error', 'Registration failed.');
+        return res.redirect('/user/auth');
+      }
+  
+      req.login(user, err => {
+        if (err) throw err;
+        else {
+            req.flash('success', 'Your account has been created successfully!');
+            res.redirect('/hub');
+        }
+      });
+    });
+  };
 
 exports.show = (req, res) =>  {
-    console.log(req.params.id);
     let query = null;
     if(req.params.id === undefined)
         query = {}
     else query = {_id: req.params.id}
-    User.find(query).then(users => {
+    UserModel.find(query).then(users => {
         res.render("userOverview", {all: users})})
         .catch(error => {
             if(error) throw error;
@@ -35,7 +46,7 @@ exports.show = (req, res) =>  {
 
 exports.edit = (req, res, next) => {
     let userId = req.params.id;  
-    User.findById(userId).then(user => {
+    UserModel.findById(userId).then(user => {
         res.render("updateUser", {user: user});
     }).catch(error => {
         console.log(`Error fetching user by ID: ${error.message}`);
@@ -50,14 +61,16 @@ exports.update = (req, res, next) => {
                 email: req.body.email,
                 password: req.body.password   
             };
-    User.findByIdAndUpdate(
+    UserModel.findByIdAndUpdate(
         userId, {    
         $set: userParams  })
         .then(() => {
-            res.redirect(`/user/${userId}`);
+            req.flash('success', 'Profile updated')
+            res.redirect(`/hub`);
             next();
         })
         .catch(error => {
+            req.flash('error', 'An error occured while updating the profile')
             console.log(`Error updating user by ID: ${error.message}`);
             next(error);
         }
@@ -65,31 +78,13 @@ exports.update = (req, res, next) => {
     
 }
 
-
-exports.clearUsers = (req, res) => {
-    User.remove({}, () => {
-        console.log('all users removed successfully')
-    });
-}
-
-exports.getUserById = (req, res) => {
-    User.findOne({id: req.params.id}, (err, user) => {
-        if(err) console.log('user not found');
-        res.send(user); // just sending back for now
-    })
-}
-
-exports.getUserByName = (req, res) => {
-    User.findOne({username: req.params.username}, (err, user) => {
-        if(err) console.log('user not found');
-        res.send(user); // just sending back for now
-    })
-}
-
-
 exports.removeUser = (req, res) => {
-    User.remove({id: req.params.id}, () => {
+    UserModel.remove({id: req.params.id}, () => {
         res.status(200).render('index'); 
     })
+}
+
+exports.getProfile = (req, res) => {
+    res.status(200).render('updateUser');
 }
 

@@ -6,6 +6,19 @@
     <link rel="stylesheet" href="/css/layout.css">
 </head>
 <body>
+    <div class="slide">
+        <%if (flashMessages) { %>
+            <%if (flashMessages.success) { %>
+                <div class="flash-success">
+                    <%= flashMessages.success %>
+                </div>
+                <% }else if (flashMessages.error) { %>
+                    <div class="flash-error">
+                        <%=flashMessages.error %>
+                    </div>
+            <%}%>
+        <%}%>
+            </div>
     <!-- <div class="wrapper"> -->
        <header><%- include('./partials/navigation') %></header> 
         <main><%- body %></main>

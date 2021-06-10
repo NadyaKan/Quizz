@@ -64,7 +64,8 @@ img {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"], 
+input[type="email"] {
   display: block;
   line-height: 1vh;
   width: 40vh;
@@ -142,4 +143,8 @@ h4 {
   font-size: 4vh;
   color: white;
   top: 35vh;
+}
+
+.filler{
+  visibility: hidden;
 }

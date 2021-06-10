@@ -1,14 +1,24 @@
 const express = require("express"),
   app = express(),
   layouts = require("express-ejs-layouts"),
-  logController = require("./controllers/LogController"),
-  errorController = require("./controllers/ErrorController"),
-  dummyController = require("./controllers/dummyController"),
-  routeController = require("./controllers/routeController"),
-  userController = require("./controllers/userController"),
-  quizController = require("./controllers/quizController"),
-  methodOverride = require("method-override");
-app.use(methodOverride("_method", { methods: ["POST", "GET"] }));
+  logController = require("./controllers/logController"),
+  errorController = require("./controllers/errorController"),
+  methodOverride = require("method-override"),
+  passport = require("passport"),
+  UserModel = require("./models/UserModel"),
+  routes = require('./routes')(express),
+  flash = require('express-flash')
+;
+
+
+app.use(methodOverride("_method", { methods: ["POST", "GET", "DELETE"] }));
+const expressSession = require('express-session')({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: false
+});
+app.use(expressSession);
+app.use(flash());
 
 app.use(logController.log);
 app.use(express.json());
@@ -20,43 +30,32 @@ app.use(layouts);
 app.use(express.urlencoded({ extended: true }));
 app.use(errorController.respondInternalError);
 
-//routes
-app.get("/", routeController.getIndexPage);
-app.get("/get-started", userController.setup);
-app.post("/register", userController.create);
-//app.post('/login', userController.addUser);
-app.get("/hub", routeController.getHub);
-app.get("/user", userController.show);
-app.get("/user/:id", userController.show);
-app.get("/user/:id/edit", userController.edit);
-app.put("/user/:id/update", userController.update);
-app.get("/user/:id/remove", userController.removeUser);
-// remove all quizzes from user
-// remove a specific quiz from a user
-
-//dummy
-app.get("/adduser", dummyController.createDummyUser); //user erstellen
-app.get("/addquiz", dummyController.createDummyQuiz); //quiz erstellen und user als creator nehmen
-app.get("/getuser/:username", dummyController.getUserByName); //user ausgeben
-
-app.get("/user/:userid/quizzes", dummyController.getAllQuizzesFromUser); //alle erstellten quizze von user abrufen
-app.get("/user/quizzes/new", quizController.new);
-app.post("/user/quizzes/create", quizController.create);
-
-app.get("/user/quizzes/:id", quizController.showQuiz);
-app.post("/user/quizzes/:id", quizController.updateQuizz);
-
-app.get("/user/:userId/remove-quizzes", quizController.removeAllQuizzes);
-app.get("/quiz/:quizId/remove-quiz", quizController.removeQuizById);
-
-app.get("/clear", dummyController.clear);
-
 //views
 app.set("views", "./views");
 app.set("view engine", "ejs");
 app.set("layout", "./layout");
 
+/* PASSPORT LOCAL AUTHENTICATION */
+
+passport.use(UserModel.createStrategy());
+passport.serializeUser(UserModel.serializeUser());
+passport.deserializeUser(UserModel.deserializeUser());
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+app.use(function(req,res,next){
+  res.locals.flashMessages = req.flash();
+  res.locals.login = req.isAuthenticated();
+  res.locals.currentUser = req.user;
+  next();
+})
+
+app.use('/', routes);
+
 //after middleware
 app.use(errorController.respondNoResourceFound);
+
 
 module.exports = app;

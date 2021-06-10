@@ -14,7 +14,8 @@ const quizSchema = Schema({
     creator: {type: mongoose.Types.ObjectId, ref: 'User'},
     data: [{
             question: String, 
-            answer: [{option: String, correct: Boolean}]
+            answer: [String],
+            correct: Number
         }]
 });
 

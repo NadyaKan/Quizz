@@ -13,7 +13,6 @@
       <table id="users-table" width="100%">
         <thead>
           <tr>
-            <th class="userid">ID</th>
             <th class="username">USERNAME</th>
             <th class="useremail">EMAIL</th>
             <th class="userpassword">PASSWORD</th>
@@ -21,22 +20,21 @@
           </tr>
         </thead>
         <tr>
-          <td class="space"></th>
-          <td class="space"></th>
-          <td class="space"></th>
-          <td class="space"></th>
-          <td class="space"></th>
+          <td class="space"></td>
+          <td class="space"></td>
+          <td class="space"></td>
+          <td class="space"></td>
         </tr>
         <% all.forEach(e => { %>
         <tbody>
-          <tr>
+          <tr class="row">
             <td>
-              <a href="<%=`/user/${e.id}/edit` %>"><%= e.id %></a>
-            </th>
-            <td><%= e.username %></th>
-            <td><%= e.email %></th>
-            <td><%= e.password %></th>
-            <td><%= e.date %></th>
+              <a href="<%=`/user/${e.id}/edit` %>"><%= e.username %></a>
+            </td>
+            <td><%= e.email_address %></td>
+            <td class="passtd"><%= e.user_password %></td>
+            <td><%= e.date %></td>
+              
           </tr>
         </tbody>
         <% }); %>

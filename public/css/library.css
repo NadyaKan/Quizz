@@ -5,7 +5,7 @@ body {
   }
   
   .navigation-bar {
-    display: none;
+    display: inline;
   }
   
   img {
@@ -27,14 +27,14 @@ body {
 
   .allquiz-container {
     position: absolute;
-    background-color: #bdc7c9;
+    background-color: #ffffff;
     width: 160vh;
     top: 10vh;
     height: 70vh;
     left: 17.5vh;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 5px 10px rgb(117, 117, 117);
+    box-shadow: 0 5px 10px rgb(255, 255, 255, 0.4);
     z-index: 2;
   }
   

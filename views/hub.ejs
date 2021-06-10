@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <head>
-  <title>Friends Quiz</title>
+  <title><%= currentUser.username %>'s Hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/css/hub.css" type="text/css" />
 </head>
 <body>
   <img src="/img/index-bg.jpg" alt="minimalistic shapes" />
   <div class="opacity-black-box"></div>
-  <div class="topbar-hub"></div>
   <div class="menu-container">
-    <div class="Settings">
-      <h1 class="small-section">SETTINGS</h1>
+    <div class="Profile" onclick="location.href='/user/profile';">
+      <h1 class="small-section">PROFILE</h1>
     </div>
-    <div class="Profile" onclick="location.href='/quizlib';">
-      <a href="/quizlib"><h1 class="small-section">QUIZ LIBRARY</h1></a>
+    <div class="Library" onclick="location.href='/quiz/library/<%= currentUser._id %>';">
+      <h1 class="small-section">QUIZ LIBRARY</h1>
     </div>
     <div class="Enter-Code">
       <h1 id="top-word1" class="large-section">ENTER</h1>
       <h1 class="large-section">CODE</h1>
     </div>
-    <div class="Create-Quiz">
+    <div class="Create-Quiz"  onclick="location.href='/quiz/create';">
       <h1 id="top-word2" class="large-section">CREATE</h1>
       <h1 class="large-section">A</h1>
       <h1 class="large-section">NEW</h1>
@@ -27,24 +26,3 @@
     </div>
   </div>
 </body>
-
-<!-- 
-    <div class="menu">
-    
-    <div class="column" id="profile">
-        <h1 class="menu-section">PROFILE</h1>
-    </div>
-
-    <div class="column" id="enter-link">
-        <h1 id="top-word1"class="enter-quiz">ENTER</h1>
-        <h1 class="enter-quiz">A</h1>
-        <h1 class="enter-quiz">CODE</h1>
-    </div>
-
-    <div class="column" id="create-quiz">
-      <h1 id="top-word2"class="new-quiz">CREATE</h1>
-      <h1 class="new-quiz">A</h1>
-      <h1 class="new-quiz">NEW</h1>
-      <h1 class="new-quiz">QUIZ</h1>
-  </div>
--->
