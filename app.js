@@ -1,21 +1,18 @@
 const express = require("express"),
   app = express(),
   layouts = require("express-ejs-layouts"),
-  logController = require("./controllers/logController"),
+  logController = require("./controllers/LogController"),
   errorController = require("./controllers/errorController"),
   methodOverride = require("method-override"),
   passport = require("passport"),
   UserModel = require("./models/UserModel"),
-  routes = require('./routes')(express),
-  flash = require('express-flash')
-;
-
-
+  routes = require("./routes")(express),
+  flash = require("express-flash");
 app.use(methodOverride("_method", { methods: ["POST", "GET", "DELETE"] }));
-const expressSession = require('express-session')({
-  secret: 'secret',
+const expressSession = require("express-session")({
+  secret: "secret",
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
 });
 app.use(expressSession);
 app.use(flash());
@@ -44,18 +41,16 @@ passport.deserializeUser(UserModel.deserializeUser());
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-app.use(function(req,res,next){
+app.use(function (req, res, next) {
   res.locals.flashMessages = req.flash();
   res.locals.login = req.isAuthenticated();
   res.locals.currentUser = req.user;
   next();
-})
+});
 
-app.use('/', routes);
+app.use("/", routes);
 
 //after middleware
 app.use(errorController.respondNoResourceFound);
-
 
 module.exports = app;
