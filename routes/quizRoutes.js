@@ -3,7 +3,7 @@ const connectEnsureLogin = require('connect-ensure-login');
 const quizController = require('../controllers/quizController');
 
 
-router.get('/library/:id', quizController.getAllQuizzes);
+router.get('/library/:id', quizController.getAllQuizzesFromUser);
 router.get('/create',connectEnsureLogin.ensureLoggedIn(), quizController.getNewQuiz);
 router.post('/:id/create', quizController.createNewQuiz);
 router.get("/view/:id", quizController.showQuiz);

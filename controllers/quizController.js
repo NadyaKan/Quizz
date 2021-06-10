@@ -36,11 +36,15 @@ exports.createNewQuiz = (req, res) => {
 
 }
 
-exports.getAllQuizzes = (req, res) => {
+exports.getAllQuizzesFromUser = (req, res) => {
   Quiz.find({creator: req.params.id}, (err, result) => {
     if (err) throw err;
-    res.status(200).render("library", { quizzes: result });
+    if(req.query.format === 'json')
+      res.json(result);
+    else  
+      res.render("library", { quizzes: result });
   });
+  
 };
 
 exports.showQuiz = (req, res) => {
