@@ -100,3 +100,15 @@ exports.updateQuizz = (req, res, next) => {
       return next(error);
     });
 };
+
+exports.getCode = (req, res) =>{
+  res.render('code');
+}
+
+exports.loadQuiz = (req, res) => {
+
+}
+
+exports.getResults = (req, res) => {
+
+}

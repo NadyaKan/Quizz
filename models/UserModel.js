@@ -24,7 +24,7 @@ const userSchema = Schema({
     minLength: [6, "Password must be at least 6 characters long!"],
   },
   date: {
-    type: Date
+    type: String
   },
 });
 
