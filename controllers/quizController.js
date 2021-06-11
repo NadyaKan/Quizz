@@ -1,4 +1,5 @@
 const Quiz = require("../models/Quiz");
+const User = require('../models/UserModel');
 
 exports.getNewQuiz = (req, res) => {
   res.status(200).render("newQuiz");
@@ -105,22 +106,22 @@ exports.getCode = (req, res) =>{
   res.render('code');
 }
 
-exports.processCode = (req, res) => {
+exports.loadQuiz = (req, res) => {
+  
   const code = req.body.code;
   Quiz.findOne({_id: code}, (err, quiz) => {
     if(err){
       req.flash('error', 'Code is invalid. Check and try again.');
       res.redirect('/quiz/code');
     } else {
-      req.flash('success', 'Loaded quiz successfully');
-      res.locals.quiz = quiz;
-      res.redirect('/quiz/code/'+quiz._id);
+      console.log(quiz.creator);
+      User.findOne({_id: quiz.creator}, (err, user) => {
+        if(err) throw err;
+        req.flash('success', 'Loaded quiz successfully');
+        res.render('answerQuiz', {quiz: quiz, creator: user});
+      })
     }
   })
-}
-
-exports.loadQuiz = (req, res) => {
-  res.render('answerQuiz', {quiz: res.locals.quiz});
 }
 
 exports.getResults = (req, res) => {

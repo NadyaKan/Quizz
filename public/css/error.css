@@ -1,12 +1,10 @@
 body {
     position: relative;
-    align-items: center;
-    text-align: center;
     display: block;
   }
   
   .navigation-bar {
-    display: none;
+    display: inline;
   }
   
   img {
@@ -29,12 +27,13 @@ body {
   .errortext-container{
     z-index: 3;
     position: absolute;
-    width: 70%;
-    height: auto;
+    width: 100%;
+    height: 80%;
     font-size: 9vh;
-    left: 15%;
-    top: 20%;
     color: white;    
     text-shadow: 0 2px 10px black;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }

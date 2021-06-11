@@ -13,8 +13,7 @@ router.get("/remove/all/:userId", quizController.removeAllQuizzes);
 router.get("/remove/:quizId", quizController.removeQuizById);
 
 router.get('/code', quizController.getCode);
-router.post('/code', quizController.processCode);
-router.get('/code/:id', quizController.loadQuiz);
+router.post('/code', quizController.loadQuiz);
 router.get('/results', quizController.getResults);
 
 
