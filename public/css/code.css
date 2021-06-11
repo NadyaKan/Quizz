@@ -26,10 +26,10 @@ body {
 .input-container{
   z-index: 4;
   position: absolute;
-  width: 30%;
+  width: 35%;
   height: 45%;
   background-color: antiquewhite;
-  left: 35%;
+  left: 32.5%;
   top: 15%;
   border-radius: 20px;
 }
