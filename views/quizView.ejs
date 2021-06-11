@@ -7,33 +7,58 @@
 <body>
   <img src="/img/index-bg.jpg" alt="minimalistic shapes" />
   <div class="opacity-black-box"></div>
-  <div class="allquiz-container">
-    <div class="table-container">
-      <form action="/quiz/view/<%= quiz._id %>" method="post">
-        <% for (var i =0; i < quiz.data.length; i++ ) { %>
+  <div class="main-wrapper">
+    <form method="POST" action="/quiz/<%= currentUser._id %>/create">
+      <input
+        id="title"
+        type="text"
+        name="title"
+        placeholder="<%= quiz.title %>"
+      />
+      <button class="add_form_field">
+        Add New Field &nbsp;
+        <span style="font-size: 16px; font-weight: bold">+ </span>
+      </button>
+      <table class="qaTable">
+        <thead>
+          <th>Questions</th>
+          <th>Answers</th>
+        </thead>
+      </table>
+      <% for (var i =0; i < quiz.data.length; i++ ) { %>
+      <div class="qaWrapper">
         <div>
-          <div>
-            <h1>Question: <%= i+1 %></h1>
-            <input
-              type="text"
-              name="questionData<%= i %>"
-              value="<%= quiz.data[i].question %>"
-            />
+          <div class="block container1">
+            <div id="question-section">
+              <input
+                type="text"
+                name="questionData<%= i %>"
+                id="question"
+                placeholder="<%= quiz.data[i].question %>"
+              />
+            </div>
+            
+            <div id="answer-section">
+              <% for (var a =0; a < quiz.data[i].answer.length; a++ ) { %>
+              <input
+                class="answer"
+                name="quiz.data[i].answer[a]"
+                placeholder="<%= quiz.data[i].answer[a] %>"
+                
+              />
+              <input type="radio" name="correct[i]" value="<%= a %>"  checked=quiz.data[i].answer[a].checked/>
+              <% } %>
+            </div>
+            
           </div>
-          <% quiz.data[i].answer.forEach(e => { %>
-          <div>
-            <input
-              type="text"
-              name="answerOption-<%= quiz.data[i]._id %>"
-              value="<%= e %>"
-            />
-          </div>
-          <% }) %>
         </div>
-        <% } %>
-        <br />
-        <button type="submit">Save Edited</button>
-      </form>
-    </div>
+      </div>
+      <% } %>
+      <button type="submit">Save Edit</button>
+    </form>
+
+    
   </div>
+
+  
 </body>
