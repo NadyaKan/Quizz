@@ -30,6 +30,7 @@
               <th>Answers</th>
             </thead>
           </table>
+
           <div class="block container1">
             <div id="question-section">
               <input
@@ -40,20 +41,18 @@
               />
             </div>
             <div id="answer-section">
-              <input
+              <button id="add-answer-btn">+</button>
+              <div class="answer-block">
+                <input
                 class="answer"
                 name="answers[0]"
                 placeholder="Answer 1"
                 required
-              />
-              <input type="radio" name="correct[0]" value='0' required /><br />
-              <input
-                class="answer"
-                name="answers[0]"
-                placeholder="Answer 2"
-                required
-              />
-              <input type="radio" name="correct[0]" value='1' required />
+                />
+                <input type="radio" name="correct[0]" value='0' required /><br />
+              </div>
+
+              
             </div>
           </div>
         </div>
@@ -71,36 +70,59 @@
     var max_fields = 10;
     var wrapper = $(".container1");
     var add_button = $(".add_form_field");
-    var index = 0;
+    var blockIndex = 0;
+    var answerIndex = 0;
     var x = 1;
     $(add_button).click(function (e) {
       e.preventDefault();
       if (x < max_fields) {
         x++;
-        index++;
-
+        blockIndex++;
+        answerIndex = 0;
+        
         $(wrapper).append(`
             <div class="block">
             <div id="question-section">
-              <input type="text" name="questions[${index}]" id="question" placeholder="What is my favourite food?">
+              <input type="text" name="questions[${blockIndex}]" id="question" placeholder="What is my favourite food?">
             </div>
             <div id="answer-section">
-                <input class="answer" name="answers[${index}]" placeholder="Answer 1">
-                <input type="radio" name="correct[${index}]" value="0"><br>
-                <input class="answer" name="answers[${index}]" placeholder="Answer 2">
-                <input type="radio" name="correct[${index}]" value="1">
-            </div>
+              <div class="answer-block">
+                <input class="answer" name="answers[${blockIndex}]" placeholder="Answer ${answerIndex+1}" required />
+                <input type="radio" name="correct[0]" value='${answerIndex}' required /><br />
+              </div>
+
           </div>
             `); //add input box
+            
       } else {
         alert("You Reached the limits");
       }
     });
 
-    $(wrapper).on("click", ".delete", function (e) {
+      var answerWrapper = $('#answer-section');
+      var addAnswerBtn = $('#add-answer-btn');
+      var answerMax = 6;
+      var a = 0;
+
+      $(addAnswerBtn).click(function (e) {
       e.preventDefault();
-      $(this).parent("div").remove();
-      x--;
+      if (x < answerMax) {
+        a++;
+        answerIndex++;
+
+        $(answerWrapper).append(`
+          <div class="answer-block">
+                <input class="answer" name="answers[${blockIndex}]" placeholder="Answer ${answerIndex+1}" required />
+                <input type="radio" name="correct[${blockIndex}]" value='${answerIndex}' required /><br />
+              </div>
+          </div>
+            `); //add input box
+      } else {
+        alert("You Reached the limits");
+      }
+    
+
     });
+
   });
 </script>

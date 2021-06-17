@@ -4,23 +4,38 @@
       <title>Quiz Time!</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="stylesheet" href="/css/answerQuiz.css" type="text/css" />
+      <script defer src="/js/game.js"></script>
     </head>
     <body>
       <img src="/img/index-bg.jpg" alt="minimalistic shapes" />
       <div class="opacity-black-box"></div>
-      <div class="quiz-container">
-        <div id="quiz-header">
-          <h1><%= quiz.title %></h1>
-          <h3>Created by <%= creator.username %></h3>
-        </div>
-      
-        <div class="quiz-body">
-          <div class="qaBox">
-            <h2>1. <%= quiz.data[0].question %> ? </h2>
+      <div id="quiz-header">
+        <h1><%= quiz.title %></h1>
+        <h3>Created by <%= creator.username %></h3>
+      </div>
+        <script>
+          var title = '<%- JSON.stringify(quiz.title) %>';
+          var data = '<%- JSON.stringify(quiz.data) %>';
+        </script>
+
+      <div class="start-container">
+        <button id="start-btn" class="start-btn">Start</button>
+      </div>
+
+      <div id="quiz-body" class=" hide">
+        <div id="question-container">
+          <div id="question">Question</div>
+          <div id="answer-btns" class="btn-grid">
+            <button class="btn">Answer 1</button>
+            <button class="btn">Answer 2</button>
+            <button class="btn">Answer 3</button>
+            <button class="btn">Answer 4</button>
           </div>
         </div>
-
-
+        <div class="controles">
+          <button id="next-btn" class="next-btn">Next</button>
+        </div>
+      </div>
 
     </div>
     </body>

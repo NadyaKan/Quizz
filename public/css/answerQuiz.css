@@ -1,6 +1,5 @@
 body {
-    position: relative;
-    display: block;
+    box-sizing: border-box;
   }
   
   .navigation-bar {
@@ -24,15 +23,36 @@ body {
     z-index: 2;
   }
 
-  .quiz-container{
-    position:absolute;
-    width: 80%;
-    height:85%;
-    background-color: white;
-    z-index: 3;
-    margin: 7vh 10%;
-    border-radius: 50px;
-    overflow: auto;
+
+  :root{
+    --hue-neutral: 0;
+    --hue-wrong: 9;
+    --hue-correct: 113;
+  }
+
+  #quiz-body{
+    --hue: var(--hue-neutral);
+    position: absolute;
+    width: 40vw;
+    height: 55vh;
+    z-index: 4;
+    background-color: hsl(var(--hue), 0%, 100%);
+    left: 30%;
+    top: 27%;
+    border-radius: 10px;
+  }
+
+  .correct{
+    --hue: var(--hue-correct);
+    background-color: hsl(var(--hue), 47%, 62%);
+    border: 1px solid hsl(var(--hue), 47%, 42%);
+  }
+
+  .wrong{
+    --hue: var(--hue-wrong);
+    background-color: hsl(var(--hue), 83%, 60%);
+    border: 1px solid hsl(var(--hue), 83%, 40%);
+    
   }
 
   #quiz-header{
@@ -40,26 +60,79 @@ body {
     width: 100%;
     height: 15%;
     text-align: center;
-    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.37);
+    text-shadow: 0 2px 7px rgba(0, 0, 0, 0.37);
+    z-index: 4;
+    top: 4vh;
+    color: white;
   }
 
   h1{
     padding-top: 0.5vh;
-    font-size: 6vh;
+    font-size: 12vh;
+    letter-spacing: 0.2vw;
   }
 
   h3{
     font-size: 3vh;
   }
 
-  .quiz-body{
-    position: absolute;
-    width: 100%;
-    height: 85%;
-    top: 15%;
-    background-color: rgba(0, 255, 255, 0.342);
+  #question-container{
+    max-width: 90%;
+    margin-left: 5%;
+    max-height: 80%;
   }
 
-  .qaBox{
-    margin: 4vh;
+  #question{
+    margin-top: 2vh;
+    font-size: 5vh;
+  }
+
+  .btn{
+    font-size: 4vh;
+    padding: 1vh 0px;
+    margin: 0.5vh 0px;
+    cursor: pointer;
+  }
+
+  .btn-grid{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 2vh 0px;
+  }
+
+  .controles{
+    position: absolute;
+    width: 100%;
+    bottom: 50px;
+    text-align: center;
+    z-index: 4;
+    
+  }
+
+  .next-btn{
+    font-size: 5vh;
+    padding: 1vh 2vh;
+    cursor: pointer;
+    
+  }
+
+  .hide{
+    display: none;
+  }
+
+  .start-container{
+    position: absolute;
+    width: 100vw;
+    height: 15vh;
+    z-index: 4;
+    text-align: center;
+    top: 35%;
+
+  }
+
+  .start-btn{
+    font-size: 8vh;
+    padding: 1vh 2vh;
+    cursor: pointer;
   }

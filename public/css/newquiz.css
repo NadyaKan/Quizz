@@ -93,25 +93,26 @@ th{
 
 .block{
   position: relative;
-  height: 15vh;
+  min-height: 15vh;
   background-color: rgba(0, 0, 0, 0.09);
   border-radius: 50px;
   margin-top: 1vh;
+  overflow:hidden;
 }
 
 #question-section{
+  position: absolute;
   width: 50%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  background-color: aqua;
 }
 
 #answer-section{
-  position: absolute;
+  position: relative;
   width: 50%;
-  height: 100%;
   left: 50%;
   top: 0px;
   text-align: center;
@@ -126,4 +127,11 @@ input[type=radio]{
 .add_form_field{
   margin-bottom: 2vh;
   font-size: 2vh;
+}
+
+#add-answer-btn{
+  height: 4vh;
+  width: 4vh;
+  margin-top: 1vh;
+  margin-bottom: 0.5vh;
 }

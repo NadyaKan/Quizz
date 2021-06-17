@@ -1,5 +1,6 @@
 const Quiz = require("../models/Quiz");
 const User = require('../models/UserModel');
+const mongoose= require('mongoose');
 
 exports.getNewQuiz = (req, res) => {
   res.status(200).render("newQuiz");
@@ -14,7 +15,7 @@ exports.createNewQuiz = (req, res) => {
   for (var i = 0; i < questionData.length; i++) {
     let correctAnswerIndex = parseInt(correct[i]);
     let answers = [];
-    for(var j = 0; j < answerData.length; j++){
+    for(var j = 0; j < answerData[i].length; j++){
       if(j === correctAnswerIndex)
         answers[j] = {option: answerData[i][j], correct: true}  
       else
@@ -27,21 +28,28 @@ exports.createNewQuiz = (req, res) => {
       answer: answers
     };
   }
+  console.log(req.body.title)
+  console.log(req.params.id)
+  console.log(data)
 
   Quiz.create(
     {
+      _id: new mongoose.Types.ObjectId(),
       title: req.body.title,
       creator: req.params.id,
       data: data,
     },
     (err) => {
-      if (err) throw err;
-      req.flash("error", "Quiz creation failed..");
+      if(err) {
+        req.flash("error", "Quiz creation failed..");
+        throw err
+      }
+      else{
+        req.flash("success", "Quiz has been created");
+        res.redirect(`/quiz/library/${req.params.id}`);
+      }
     }
   );
-  req.flash("success", "Quiz has been created");
-  res.redirect(`/quiz/library/${req.params.id}`);
-  
 };
 
 exports.getAllQuizzesFromUser = (req, res) => {
@@ -120,7 +128,6 @@ exports.loadQuiz = (req, res) => {
       req.flash('error', 'Code is invalid. Check and try again.');
       res.redirect('/quiz/code');
     } else {
-      console.log(quiz.creator);
       User.findOne({_id: quiz.creator}, (err, user) => {
         if(err) throw err;
         req.flash('success', 'Loaded quiz successfully');
