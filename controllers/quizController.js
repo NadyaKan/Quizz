@@ -12,14 +12,19 @@ exports.createNewQuiz = (req, res) => {
   var data = [];
 
   for (var i = 0; i < questionData.length; i++) {
+    let correctAnswerIndex = parseInt(correct[i]);
     let answers = [];
-    answers[0] = answerData[i][0];
-    answers[1] = answerData[i][1];
+    for(var j = 0; j < answerData.length; j++){
+      if(j === correctAnswerIndex)
+        answers[j] = {option: answerData[i][j], correct: true}  
+      else
+        answers[j] = {option: answerData[i][j], correct: false}  
+      
+    }
 
     data[i] = {
       question: questionData[i],
-      answer: answers,
-      correct: correct[i],
+      answer: answers
     };
   }
 
@@ -36,6 +41,7 @@ exports.createNewQuiz = (req, res) => {
   );
   req.flash("success", "Quiz has been created");
   res.redirect(`/quiz/library/${req.params.id}`);
+  
 };
 
 exports.getAllQuizzesFromUser = (req, res) => {

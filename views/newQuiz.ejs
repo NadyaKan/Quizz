@@ -46,18 +46,19 @@
                 placeholder="Answer 1"
                 required
               />
-              <input type="radio" name="correct[0]" value="0" required /><br />
+              <input type="radio" name="correct[0]" value='0' required /><br />
               <input
                 class="answer"
                 name="answers[0]"
                 placeholder="Answer 2"
                 required
               />
-              <input type="radio" name="correct[0]" value="1" required />
+              <input type="radio" name="correct[0]" value='1' required />
             </div>
           </div>
         </div>
       </div>
+
 
       <button type="submit">Create</button>
     </form>
@@ -85,9 +86,9 @@
             </div>
             <div id="answer-section">
                 <input class="answer" name="answers[${index}]" placeholder="Answer 1">
-                <input type="radio" name="[correct][${index}]" value="0"><br>
+                <input type="radio" name="correct[${index}]" value="0"><br>
                 <input class="answer" name="answers[${index}]" placeholder="Answer 2">
-                <input type="radio" name="[correct][${index}]" value="1">
+                <input type="radio" name="correct[${index}]" value="1">
             </div>
           </div>
             `); //add input box
