@@ -25,12 +25,9 @@ exports.createNewQuiz = (req, res) => {
 
     data[i] = {
       question: questionData[i],
-      answer: answers
+      answers: answers
     };
   }
-  console.log(req.body.title)
-  console.log(req.params.id)
-  console.log(data)
 
   Quiz.create(
     {

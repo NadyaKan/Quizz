@@ -96,7 +96,7 @@ body {
 
   .btn-grid{
     display: grid;
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(1, auto);
     gap: 10px;
     margin: 2vh 0px;
   }
@@ -111,10 +111,18 @@ body {
   }
 
   .next-btn{
+    position: absolute;
     font-size: 5vh;
     padding: 1vh 2vh;
     cursor: pointer;
-    
+    width: 16%;
+    height: 5.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    left: 42%;
+    bottom: -3vh;
   }
 
   .hide{
