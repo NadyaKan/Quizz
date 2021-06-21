@@ -131,7 +131,7 @@ exports.loadQuiz = (req, res) => {
       User.findOne({_id: quiz.creator}, (err, user) => {
         if(err) throw err;
         req.flash('success', 'Loaded quiz successfully');
-        res.render('answerQuiz', {quiz: quiz, creator: user});
+        res.render('answerQuiz', {quiz: JSON.stringify(quiz), creator: user});
       })
     }
   })

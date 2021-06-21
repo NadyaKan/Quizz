@@ -13,10 +13,14 @@
         <h1><%= quiz.title %></h1>
         <h3>Created by <%= creator.username %></h3>
       </div>
-        <script>
-          var title = '<%- JSON.stringify(quiz.title) %>';
-          var data = '<%- JSON.stringify(quiz.data) %>';
-        </script>
+      
+      <% const quiz_data = quiz %>
+      <script>
+        var quizz = '<%- quiz_data %>';
+      </script>
+
+
+        
 
       <div class="start-container">
         <button id="start-btn" class="start-btn">Start</button>
