@@ -16,13 +16,15 @@ exports.createNewQuiz = (req, res) => {
     let correctAnswerIndex = parseInt(correct[i]);
     let answers = [];
     for(var j = 0; j < answerData[i].length; j++){
-      if(j === correctAnswerIndex)
+      if(answerData[i][j] === "") continue;
+      else {
+        if(j === correctAnswerIndex)
         answers[j] = {option: answerData[i][j], correct: true}  
       else
-        answers[j] = {option: answerData[i][j], correct: false}  
-      
+        answers[j] = {option: answerData[i][j], correct: false} 
+      }
     }
-
+    
     data[i] = {
       question: questionData[i],
       answers: answers
@@ -128,7 +130,7 @@ exports.loadQuiz = (req, res) => {
       User.findOne({_id: quiz.creator}, (err, user) => {
         if(err) throw err;
         req.flash('success', 'Loaded quiz successfully');
-        res.render('answerQuiz', {quiz: JSON.stringify(quiz), creator: user});
+        res.render('answerQuiz', {title: quiz.title, quiz: JSON.stringify(quiz), creator: user});
       })
     }
   })
