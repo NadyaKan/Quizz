@@ -4,7 +4,8 @@ mongoose.pluralize(null);
 
 const quizSchema = Schema({
     _id: {
-        type: mongoose.Types.ObjectId
+        type: mongoose.Types.ObjectId,
+        default: new mongoose.Types.ObjectId(),
     }, //id for sharing -> /quiz/Object_ID
     title: {
         type: String,

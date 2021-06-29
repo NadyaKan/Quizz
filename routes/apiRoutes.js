@@ -21,4 +21,14 @@ router.get("/all", (req, res) => {
     });
 });
 
+router.post('/quiz/:userId', (req, res) => {
+  Quiz.create(req.body, (err) => {
+    if (err) console.log(err);
+    else{
+      req.flash("success", "Quiz has been created");
+      res.render('hub');
+    }
+  })
+})
+
 module.exports = router;

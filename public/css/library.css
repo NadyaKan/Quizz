@@ -49,6 +49,8 @@ body {
   
   #quiz-table {
     border-collapse: collapse;
+    width: 90%;
+    margin-left: 5%;
   }
   th {
     padding: 1rem 2rem;
@@ -87,4 +89,20 @@ body {
   }
   a:hover{
     color:rgb(80, 80, 80)
+  }
+
+  .remove-btn{
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: white;
+    visibility: hidden;
+    cursor: pointer;
+  }
+
+  .row:hover .remove-btn{
+    visibility: visible;
   }

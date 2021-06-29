@@ -1,5 +1,5 @@
 body {
-  background: #2b4f60;
+  background-image: url('../img/index-bg.jpg');
   margin: 0;
   display: grid;
   height: 100vh;

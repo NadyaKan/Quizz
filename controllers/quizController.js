@@ -7,38 +7,8 @@ exports.getNewQuiz = (req, res) => {
 };
 
 exports.createNewQuiz = (req, res) => {
-  const questionData = req.body.questions;
-  const answerData = req.body.answers;
-  const correct = req.body.correct;
-  var data = [];
-
-  for (var i = 0; i < questionData.length; i++) {
-    let correctAnswerIndex = parseInt(correct[i]);
-    let answers = [];
-    for(var j = 0; j < answerData[i].length; j++){
-      if(answerData[i][j] === "") continue;
-      else {
-        if(j === correctAnswerIndex)
-        answers[j] = {option: answerData[i][j], correct: true}  
-      else
-        answers[j] = {option: answerData[i][j], correct: false} 
-      }
-    }
-    
-    data[i] = {
-      question: questionData[i],
-      answers: answers
-    };
-  }
-
-  Quiz.create(
-    {
-      _id: new mongoose.Types.ObjectId(),
-      title: req.body.title,
-      creator: req.params.id,
-      data: data,
-    },
-    (err) => {
+  console.log(req.body);
+  Quiz.create(req.body,(err) => {
       if(err) {
         req.flash("error", "Quiz creation failed..");
         throw err
@@ -51,8 +21,8 @@ exports.createNewQuiz = (req, res) => {
   );
 };
 
-exports.getAllQuizzesFromUser = (req, res) => {
-  Quiz.find({ creator: req.params.id }, (err, result) => {
+exports.getAllQuizzesFromUser = async (req, res) => {
+  await Quiz.find({ creator: req.params.id }, (err, result) => {
     if (err) throw err;
     res.render("library", { quizzes: result });
   });
@@ -75,9 +45,14 @@ exports.removeAllQuizzes = (req, res) => {
 };
 
 exports.removeQuizById = (req, res) => {
-  let quiz_id = req.params.id; //  /user/:id/quizzes
-  Quiz.remove({ quiz_id }, (result) => {
-    res.send(result);
+  let quiz_id = req.params.quizId; 
+  let user = req.params.userId;
+  Quiz.findByIdAndDelete({ _id: quiz_id }, (err, result) => {
+    if(err) console.log(err);
+    else{
+      req.flash("success", "Quiz has been deleted");
+      res.redirect(`/quiz/library/${user}`);
+    }
   });
 };
 
@@ -134,8 +109,4 @@ exports.loadQuiz = (req, res) => {
       })
     }
   })
-}
-
-exports.getResults = (req, res) => {
-
 }
