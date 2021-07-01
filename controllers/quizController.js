@@ -1,44 +1,28 @@
 const Quiz = require("../models/Quiz");
+const User = require('../models/UserModel');
+const mongoose= require('mongoose');
 
 exports.getNewQuiz = (req, res) => {
   res.status(200).render("newQuiz");
 };
 
 exports.createNewQuiz = (req, res) => {
-  const questionData = req.body.questions;
-  const answerData = req.body.answers;
-  const correct = req.body.correct;
-  var data = [];
-
-  for (var i = 0; i < questionData.length; i++) {
-    let answers = [];
-    answers[0] = answerData[i][0];
-    answers[1] = answerData[i][1];
-
-    data[i] = {
-      question: questionData[i],
-      answer: answers,
-      correct: correct[i],
-    };
-  }
-
-  Quiz.create(
-    {
-      title: req.body.title,
-      creator: req.params.id,
-      data: data,
-    },
-    (err) => {
-      if (err) throw err;
-      req.flash("error", "Quiz creation failed..");
+  console.log(req.body);
+  Quiz.create(req.body,(err) => {
+      if(err) {
+        req.flash("error", "Quiz creation failed..");
+        throw err
+      }
+      else{
+        req.flash("success", "Quiz has been created");
+        res.redirect(`/quiz/library/${req.params.id}`);
+      }
     }
   );
-  req.flash("success", "Quiz has been created");
-  res.redirect(`/quiz/library/${req.params.id}`);
 };
 
-exports.getAllQuizzesFromUser = (req, res) => {
-  Quiz.find({ creator: req.params.id }, (err, result) => {
+exports.getAllQuizzesFromUser = async (req, res) => {
+  await Quiz.find({ creator: req.params.id }, (err, result) => {
     if (err) throw err;
     res.render("library", { quizzes: result });
   });
@@ -61,9 +45,14 @@ exports.removeAllQuizzes = (req, res) => {
 };
 
 exports.removeQuizById = (req, res) => {
-  let quiz_id = req.params.id; //  /user/:id/quizzes
-  Quiz.remove({ quiz_id }, (result) => {
-    res.send(result);
+  let quiz_id = req.params.quizId; 
+  let user = req.params.userId;
+  Quiz.findByIdAndDelete({ _id: quiz_id }, (err, result) => {
+    if(err) console.log(err);
+    else{
+      req.flash("success", "Quiz has been deleted");
+      res.redirect(`/quiz/library/${user}`);
+    }
   });
 };
 
@@ -100,3 +89,24 @@ exports.updateQuizz = (req, res, next) => {
       return next(error);
     });
 };
+
+exports.getCode = (req, res) =>{
+  res.render('code');
+}
+
+exports.loadQuiz = (req, res) => {
+  
+  const code = req.body.code;
+  Quiz.findOne({_id: code}, (err, quiz) => {
+    if(err){
+      req.flash('error', 'Code is invalid. Check and try again.');
+      res.redirect('/quiz/code');
+    } else {
+      User.findOne({_id: quiz.creator}, (err, user) => {
+        if(err) throw err;
+        req.flash('success', 'Loaded quiz successfully');
+        res.render('answerQuiz', {title: quiz.title, quiz: JSON.stringify(quiz), creator: user});
+      })
+    }
+  })
+}

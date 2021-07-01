@@ -16,5 +16,16 @@
                 Logged in as: <p id="username-loggedIn"><%= currentUser.username %></p>
             </div>
         </div>
-    <% } %>
+    <% } else { %>
+        <div id="loggedInAs">
+            <div id="logout-button-container">
+                <form method="GET" action="/user/auth">
+                    <button id="login-reg-button" type="submit">Login/Register</button>
+                </form>
+            </div>
+            <div id="login-username">
+                Log in or register now!
+            </div>
+        </div>
+        <% } %>
 </div>

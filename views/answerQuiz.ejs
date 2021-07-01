@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Quiz Time!</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="/css/answerQuiz.css" type="text/css" />
+      <script defer src="/js/game.js"></script>
+    </head>
+    <body>
+      <img src="/img/index-bg.jpg" alt="minimalistic shapes" />
+      <div class="opacity-black-box"></div>
+
+      
+      <% const quiz_data = quiz %>
+      <script>
+        var quizz = '<%- quiz_data %>';
+      </script>
+
+      <div class="start-container">
+        <h1 id="header-title"><%= title %></h1>
+        <h3 id="header-creator">Created by <%= creator.username %></h3>
+        <div id="start-btn-container">
+          <button id="start-btn" class="start-btn">Start</button>
+        </div>
+      </div>
+
+      <div id="quiz-body" class="hide">
+        <div id="question-container">
+          <div id="question">Question</div>
+          <div id="answer-btns" class="btn-grid">
+            <button class="btn">Answer 1</button>
+            <button class="btn">Answer 2</button>
+            <button class="btn">Answer 3</button>
+            <button class="btn">Answer 4</button>
+          </div>
+        </div>
+        <div class="controles">
+          <button id="next-btn" class="next-btn">Next</button>
+          <button id="result-btn" class="result-btn">Results</button>
+        </div>
+      </div>
+      <div id="result-box" class="hide">
+        <div id="result-header">Quiz Completed!</div>
+        <div id="your-result" class="result">Your result:</div>
+        <div id="amount-correct" class="result"></div>
+        <div id="amount-wrong" class="result"></div>
+
+        <div id="percentage" class="result"></div>
+        <div id="result-sentence"></div>
+      </div>
+    </div>
+    </body>
+</html>

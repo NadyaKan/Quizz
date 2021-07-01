@@ -23,6 +23,7 @@ app.use(express.static("public"));
 app.use("/css", express.static("public/css"));
 app.use("/js", express.static("public/js"));
 app.use("/img", express.static("public/img"));
+app.use("/vue", express.static("public/vue"));
 app.use(layouts);
 app.use(express.urlencoded({ extended: true }));
 app.use(errorController.respondInternalError);

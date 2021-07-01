@@ -5,7 +5,7 @@ mongoose.pluralize(null);
 const quizSchema = Schema({
     _id: {
         type: mongoose.Types.ObjectId,
-        default: new mongoose.Types.ObjectId()
+        default: new mongoose.Types.ObjectId(),
     }, //id for sharing -> /quiz/Object_ID
     title: {
         type: String,
@@ -14,8 +14,7 @@ const quizSchema = Schema({
     creator: {type: mongoose.Types.ObjectId, ref: 'User'},
     data: [{
             question: String, 
-            answer: [String],
-            correct: Number
+            answers: [{option: String, correct: Boolean}],
         }]
 });
 

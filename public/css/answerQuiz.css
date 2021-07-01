@@ -1,0 +1,208 @@
+body {
+    box-sizing: border-box;
+  }
+  
+  .navigation-bar {
+    display: inline;
+  }
+  
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0px;
+    z-index: 1;
+  }
+  
+  .opacity-black-box {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.281);
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    z-index: 2;
+  }
+
+
+  :root{
+    --hue-neutral: 0;
+    --hue-wrong: 9;
+    --hue-correct: 113;
+  }
+
+  #quiz-body{
+    --hue: var(--hue-neutral);
+    position: absolute;
+    width: 40vw;
+    height: 60vh;
+    z-index: 4;
+    background-color: hsl(var(--hue), 0%, 100%);
+    left: 30%;
+    top: 22%;
+    border-radius: 10px;
+  }
+
+  .correct{
+    --hue: var(--hue-correct);
+    background-color: hsl(var(--hue), 47%, 62%);
+    border: 1px solid hsl(var(--hue), 47%, 42%);
+  }
+
+  .wrong{
+    --hue: var(--hue-wrong);
+    background-color: hsl(var(--hue), 83%, 60%);
+    border: 1px solid hsl(var(--hue), 83%, 40%);
+    
+  }
+
+  #quiz-header{
+    position: absolute;
+    width: 100%;
+    height: 15%;
+    text-align: center;
+    text-shadow: 0 2px 7px rgba(0, 0, 0, 0.37);
+    z-index: 4;
+    top: 4vh;
+    color: white;
+  }
+
+  #question-container{
+    max-width: 90%;
+    margin-left: 5%;
+    max-height: 80%;
+  }
+
+  #question{
+    margin-top: 2vh;
+    font-size: 5vh;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.795);
+    padding-bottom: 1vh;
+  }
+
+  .btn{
+    font-size: 4vh;
+    padding: 1vh 0px;
+    margin: 0.5vh 0px;
+    cursor: pointer;
+  }
+
+  .btn-grid{
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    gap: 10px;
+    margin: 2vh 0px;
+  }
+
+  .controles{
+    position: absolute;
+    width: 100%;
+    height: 25%;
+    bottom: 0px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .next-btn{
+    position: absolute;
+    font-size: 5vh;
+    padding: 1vh 2vh;
+    cursor: pointer;
+    width: 16%;
+    height: 5.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+
+  .hide{
+    display: none;
+  }
+
+  .start-container{
+    position: absolute;
+    width: 40vw;
+    height: 35vh;
+    z-index: 4;
+    background-color:aliceblue;
+    left: 30%;
+    top: 22%;
+    border-radius: 10px;
+    
+  }
+
+  #header-title{
+    padding-top: 2vh;
+    font-size: 6.5vh;
+    letter-spacing: 0.2vw;
+    text-align: center;
+  }
+
+  
+  #header-creator{
+    padding-top: 1vh;
+    font-size: 3vh;
+    text-align: center;
+  }
+
+  #start-btn-container{
+    top: 0px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .start-btn{
+    font-size: 8vh;
+    padding: 1vh 2vh;
+    cursor: pointer;
+    margin-top: 15vh;
+  }
+
+  #result-box{
+    position: absolute;
+    width: 40vw;
+    height: 60vh;
+    z-index: 4;
+    background-color: white;
+    left: 30%;
+    top: 22%;
+    border-radius: 10px;
+}
+
+#result-header{
+  text-align: center;
+  font-size: 6vh;
+  padding-top: 1vh;
+}
+
+#result-sentence{
+  margin-top: 5vh;
+  text-align: center;
+  font-size: 5.5vh;
+}
+
+#your-result{
+  padding-top: 2vh;
+  padding-bottom: 1vh;
+}
+
+
+#percentage{
+  padding-top: 7vh;
+}
+
+.result{
+  font-size: 4vh;
+  text-align: center;
+  padding-top: 1.5vh;
+}
+

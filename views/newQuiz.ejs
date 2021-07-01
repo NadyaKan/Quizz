@@ -3,103 +3,49 @@
   <title>New Quiz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/css/newquiz.css" type="text/css" />
+
+  <!-- Vue.js -->
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
-  <img src="/img/index-bg.jpg" alt="minimalistic shapes" />
-  <div class="opacity-black-box"></div>
-
-  <div class="main-wrapper">
-    <form method="POST" action="/quiz/<%= currentUser._id %>/create">
-      <input
-        id="title"
-        type="text"
-        name="title"
-        placeholder="Quiz Title.."
-        required
-      />
-
-      <div class="qaWrapper">
-        <div>
-          <button class="add_form_field">
-            Add New Field &nbsp;
-            <span style="font-size: 16px; font-weight: bold">+ </span>
-          </button>
-          <table class="qaTable">
-            <thead>
-              <th>Questions</th>
-              <th>Answers</th>
-            </thead>
-          </table>
-          <div class="block container1">
-            <div id="question-section">
-              <input
-                type="text"
-                name="questions[0]"
-                id="question"
-                placeholder="What is my favourite food?"
-              />
-            </div>
-            <div id="answer-section">
-              <input
-                class="answer"
-                name="answers[0]"
-                placeholder="Answer 1"
-                required
-              />
-              <input type="radio" name="correct[0]" value="0" required /><br />
-              <input
-                class="answer"
-                name="answers[0]"
-                placeholder="Answer 2"
-                required
-              />
-              <input type="radio" name="correct[0]" value="1" required />
-            </div>
+  <script>
+    const userId = '<%- currentUser._id %>';
+  </script>
+  <div id="app"> 
+    <div class="title-wrapper centered">
+      <h1> 
+        <input id="title" type="text" placeholder="Quiz Title.." v-model="quiz.title" required/> 
+      </h1>
+    </div>
+    <div class="qa-wrapper">
+      <table class="qa-table-header">
+        <thead>
+          <th>Question(s)</th>
+          <th>Answers</th>
+          </th>
+        </thead>
+      </table>
+      <div class="row" v-for="(block, index) in quiz.data" :key="block._id">
+       <div class="question-section section">
+         <div class="remove-qblock" @click="removeBlock(index)">
+           <img src="/img/trash.png" alt="">
           </div>
-        </div>
+         <h1 class="q-index"> {{index+1}}. </h1>
+         <input type="text" id="question" placeholder="Question.." v-model="block.question">
+       </div>
+       <div class="answer-section section">
+          <answer-component :index="index" v-on:update="updateAnswers($event, index)"/>
+       </div>
       </div>
-
-      <button type="submit">Create</button>
-    </form>
+      <div class="add-qblock centered">
+        <button @click="addBlock" class="centered">Add</button>
+      </div>
+    </div>
+    <div class="checkout-container centered">
+      <button @click="createQuiz" class="centered">Create</button>
+    </div>
   </div>
+  <script src="/vue/createQuiz.js">
+  </script>
 </body>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script>
-  $(document).ready(function () {
-    var max_fields = 10;
-    var wrapper = $(".container1");
-    var add_button = $(".add_form_field");
-    var index = 0;
-    var x = 1;
-    $(add_button).click(function (e) {
-      e.preventDefault();
-      if (x < max_fields) {
-        x++;
-        index++;
-
-        $(wrapper).append(`
-            <div class="block">
-            <div id="question-section">
-              <input type="text" name="questions[${index}]" id="question" placeholder="What is my favourite food?">
-            </div>
-            <div id="answer-section">
-                <input class="answer" name="answers[${index}]" placeholder="Answer 1">
-                <input type="radio" name="[correct][${index}]" value="0"><br>
-                <input class="answer" name="answers[${index}]" placeholder="Answer 2">
-                <input type="radio" name="[correct][${index}]" value="1">
-            </div>
-          </div>
-            `); //add input box
-      } else {
-        alert("You Reached the limits");
-      }
-    });
-
-    $(wrapper).on("click", ".delete", function (e) {
-      e.preventDefault();
-      $(this).parent("div").remove();
-      x--;
-    });
-  });
-</script>

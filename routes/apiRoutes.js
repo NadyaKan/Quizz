@@ -21,4 +21,14 @@ router.get("/all", (req, res) => {
     });
 });
 
+router.post('/quiz/:userId', (req, res) => {
+  Quiz.create(req.body, (err, quiz) => {
+    if (err) console.log(err);
+    else{
+      const redir = { redirect: '/library' };
+      return res.json(redir);
+    }
+  })
+})
+
 module.exports = router;
