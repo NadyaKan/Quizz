@@ -26,7 +26,7 @@ const app = Vue.createApp({
     async createQuiz() {
       this.convertStringToBoolean();
       await axios
-        .post("https://wtat1-group-5.herokuapp.com/" + userId, this.quiz)
+        .post("https://wtat1-group-5.herokuapp.com/quiz/" + userId, this.quiz)
         .then((res) => {
           if (res.data.redirect == "/library") {
             window.location = `/quiz/library/${userId}`;
