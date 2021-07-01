@@ -1,4 +1,4 @@
-const axiosUrl = axios.defaults.BASE_URL || "http://localhost:3000/api/quiz/";
+const axiosUrl = process.env.BASE_URL || "http://localhost:3000/api/quiz/";
 const app = Vue.createApp({
   data() {
     return {
