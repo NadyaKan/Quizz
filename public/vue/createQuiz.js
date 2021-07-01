@@ -1,3 +1,4 @@
+const axiosUrl = axios.defaults.BASE_URL || "http://localhost:3000/api/quiz/";
 const app = Vue.createApp({
   data() {
     return {
@@ -25,13 +26,11 @@ const app = Vue.createApp({
     },
     async createQuiz() {
       this.convertStringToBoolean();
-      await axios
-        .post("https://wtat1-group-5.herokuapp.com/quiz/" + userId, this.quiz)
-        .then((res) => {
-          if (res.data.redirect == "/library") {
-            window.location = `/quiz/library/${userId}`;
-          }
-        });
+      await axios.post(axiosUrl + userId, this.quiz).then((res) => {
+        if (res.data.redirect == "/library") {
+          window.location = `/quiz/library/${userId}`;
+        }
+      });
     },
     updateAnswers(updatedAnswers, index) {
       this.quiz.data[index].answers = updatedAnswers;
