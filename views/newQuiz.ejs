@@ -27,10 +27,6 @@
         </thead>
       </table>
       <div class="row" v-for="(block, index) in quiz.data" :key="block._id">
-        <script>
-          var userId = '<%- currentUser._id %>'
-        </script>
-        
        <div class="question-section section">
          <div class="remove-qblock" @click="removeBlock(index)">
            <img src="/img/trash.png" alt="">

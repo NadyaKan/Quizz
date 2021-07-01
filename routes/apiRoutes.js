@@ -22,11 +22,11 @@ router.get("/all", (req, res) => {
 });
 
 router.post('/quiz/:userId', (req, res) => {
-  Quiz.create(req.body, (err) => {
+  Quiz.create(req.body, (err, quiz) => {
     if (err) console.log(err);
     else{
-      req.flash("success", "Quiz has been created");
-      res.render('hub');
+      const redir = { redirect: '/library' };
+      return res.json(redir);
     }
   })
 })

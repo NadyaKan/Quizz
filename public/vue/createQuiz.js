@@ -23,7 +23,12 @@ const app = Vue.createApp({
         },
         async createQuiz() {
             this.convertStringToBoolean();
-            await axios.post('http://localhost:3000/api/quiz/'+userId, this.quiz);
+            await axios.post('http://localhost:3000/api/quiz/'+userId, this.quiz)
+            .then((res) => {
+                if(res.data.redirect == '/library'){
+                    window.location = `/quiz/library/${userId}`;
+                }
+            });
         },
         updateAnswers(updatedAnswers, index){
             this.quiz.data[index].answers = updatedAnswers;
