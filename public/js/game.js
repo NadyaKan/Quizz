@@ -22,7 +22,6 @@ const resultText = document.getElementById('result-sentence');
 
 resultButton.addEventListener('click', showResults);
 
-
 startButton.addEventListener('click', startGame);
 nextButton.addEventListener('click', () => {
     currentQuestionIndex++;

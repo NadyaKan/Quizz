@@ -88,9 +88,11 @@ body {
 
   .btn-grid{
     display: grid;
+    height: 17rem;
     grid-template-columns: repeat(1, auto);
     gap: 10px;
     margin: 2vh 0px;
+    align-items: center;
   }
 
   .controles{
@@ -112,6 +114,19 @@ body {
     cursor: pointer;
     width: 16%;
     height: 5.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .result-btn{
+    position: absolute;
+    font-size: 5vh;
+    padding: 1vh 1vh;
+    cursor: pointer;
+    width: 30%;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -206,3 +221,36 @@ body {
   padding-top: 1.5vh;
 }
 
+@media (max-width: 900px) {
+  .start-container{
+    width: 80vw;
+    height: 50vh;
+    left: 10vw;
+    top: 20vh;    
+  }
+  #quiz-body{
+    width: 80vw;
+    height: 70vh;
+    left: 10vw;
+    top: 15vh;
+  }
+  .next-btn{
+    font-size: 2rem;
+    padding: .5rem 1rem;
+    cursor: pointer;
+    width: 10rem;
+    height: auto;
+  }
+  .result-btn{
+    width: 45%;
+    padding: .8rem 1rem;
+    font-size: 4.5vh;
+  }
+
+  #result-box{
+    width: 80vw;
+    height: 70vh;
+    left: 10vw;
+    top: 15vh;
+}
+}
