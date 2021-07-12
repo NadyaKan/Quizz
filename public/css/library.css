@@ -1,5 +1,4 @@
 body {
-    position: relative;
     display: block;
     text-align: left;
   }
@@ -90,7 +89,9 @@ body {
   a:hover{
     color:rgb(80, 80, 80)
   }
-
+  .controles{
+    display: block;
+  }
   .remove-btn{
     width: 2rem;
     height: 2rem;
@@ -99,10 +100,36 @@ body {
     align-items: center;
     border: none;
     background-color: white;
-    visibility: hidden;
+    visibility:hidden;
     cursor: pointer;
+    float: left;
+  }
+
+  .qr-btn{
+    margin-top: 0.1rem;
+    margin-left: .3rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: white;
+    visibility:hidden;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: cover;
+    float: left;
+  }
+
+  .controles{
+    visibility: hidden;
   }
 
   .row:hover .remove-btn{
+    visibility: visible;
+  }
+
+  .row:hover .qr-btn{
     visibility: visible;
   }

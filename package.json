@@ -12,7 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "@shelf/jest-mongodb": "^1.2.4",
-    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "connect-ensure-login": "^0.1.1",
     "cookie-parser": "^1.4.5",
@@ -29,7 +28,8 @@
     "mongoose": "^5.12.7",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^6.1.0"
+    "passport-local-mongoose": "^6.1.0",
+    "qrcode": "^1.4.4"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

@@ -29,10 +29,16 @@
         <tbody>
           <tr class="row">
             <td>
-              <form method="post" action=" <%= `/quiz/${q._id}/${currentUser._id}?_method=DELETE` %> ">
-                <button class="remove-btn" type="submit" style="background-image: url('/img/remove.svg');">
-                </button>
-              </form>
+              <div class="controles">
+                <form method="post" action=" <%= `/quiz/${q._id}/${currentUser._id}?_method=DELETE` %> ">
+                  <button class="remove-btn" type="submit" style="background-image: url('/img/remove.svg');">
+                  </button>
+                </form>
+                <form method="get" action=" <%= `/quiz/code/${q._id}` %>">
+                  <button class="qr-btn" type="submit" style="background-image: url('/img/QR_icon.svg');">
+                  </button>
+                </form>
+              </div>
             </td>
             <td>
               <%= q.id %>

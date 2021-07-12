@@ -15,5 +15,8 @@ router.delete("/:quizId/:userId", quizController.removeQuizById);
 router.get('/code', quizController.getCode);
 router.post('/code', quizController.loadQuiz);
 
+// QR-link: /quiz/code/:code 
+router.get('/code/:code', quizController.generateQR);
+
 
 module.exports = router;
