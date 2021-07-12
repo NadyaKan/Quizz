@@ -109,9 +109,10 @@ exports.loadQuiz = (req, res) => {
     }
   })
 }
+const getBaseUrl = require("get-base-url").default
 
 exports.generateQR = (req, res) => {
-  const url = `http://localhost:3000/quiz/code/${req.params.code}`;
+  const url = `${getBaseUrl()}/quiz/code/${req.params.code}`;
   QRCode.toDataURL(url, (err, url) => {
     res.render('qrview', {qrUrl: url});
   })
