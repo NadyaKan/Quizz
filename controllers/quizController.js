@@ -1,6 +1,6 @@
 const Quiz = require("../models/Quiz");
 const User = require('../models/UserModel');
-const mongoose= require('mongoose');
+const QRCode = require('qrcode');
 
 exports.getNewQuiz = (req, res) => {
   res.status(200).render("newQuiz");
@@ -95,8 +95,7 @@ exports.getCode = (req, res) =>{
 }
 
 exports.loadQuiz = (req, res) => {
-  
-  const code = req.body.code;
+  const code = req.params.code || req.body.code;
   Quiz.findOne({_id: code}, (err, quiz) => {
     if(err){
       req.flash('error', 'Code is invalid. Check and try again.');
@@ -108,5 +107,13 @@ exports.loadQuiz = (req, res) => {
         res.render('answerQuiz', {title: quiz.title, quiz: JSON.stringify(quiz), creator: user});
       })
     }
+  })
+}
+const getBaseUrl = require("get-base-url").default
+
+exports.generateQR = (req, res) => {
+  const url = `${getBaseUrl()}/quiz/${req.params.code}`;
+  QRCode.toDataURL(url, (err, url) => {
+    res.render('qrview', {qrUrl: url});
   })
 }

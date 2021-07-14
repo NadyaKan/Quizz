@@ -7,17 +7,31 @@
 <body>
   <img src="/img/index-bg.jpg" alt="minimalistic shapes" />
   <div class="opacity-black-box"></div>
+  <div class="header">
+    <div class="header-section" id="one">Friends</div>
+    <div class="header-section" id="two">Quiz</div>
+  </div>
+  <div class="get-started-btn-container">
+    <form method="get" action="/hub">
+        <button class="big-button">GET STARTED</button>
+    </form>
+  </div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/circletype.min.js"></script>
+<script>
+  new CircleType(document.getElementById("")).radius(1600);
+</script>
+
+
+<!--
+  <img src="/img/index-bg.jpg" alt="minimalistic shapes" />
+  <div class="opacity-black-box"></div>
   <div id="game-name">Friends Quiz</div>
   <form method="get" action="/hub">
     <div class="button-container">
       <button class="big-button">GET STARTED</button>
     </div>
   </form>
-</body>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="/js/circletype.min.js"></script>
-<script>
-  new CircleType(document.getElementById("game-name")).radius(1600);
-</script>
-
+-->

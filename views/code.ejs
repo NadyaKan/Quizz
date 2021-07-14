@@ -12,12 +12,14 @@
         <div id="input-header">
           Enter the code below
         </div>
-        <div id="input-field">
-          <form action="/quiz/code" method="POST" required>
-          <input id="code-input" name="code" type="text" placeholder="Code.." required>
-          <button id="submit-code" type="submit">Submit</button>
-          </form>
-        </div>
+        <form action="/quiz/code" method="POST" required>
+          <div id="input-field">
+            <input id="code-input" name="code" type="text" placeholder="Code.." required>
+          </div>
+          <div class="submit-container">
+            <button type="submit">Submit</button>
+          </div>
+      </form>
       </div>
     </body>
 </html>

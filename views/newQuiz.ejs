@@ -29,7 +29,7 @@
       <div class="row" v-for="(block, index) in quiz.data" :key="block._id">
        <div class="question-section section">
          <div class="remove-qblock" @click="removeBlock(index)">
-           <img src="/img/trash.png" alt="">
+           <img src="/img/trash.png" alt="remove">
           </div>
          <h1 class="q-index"> {{index+1}}. </h1>
          <input type="text" id="question" placeholder="Question.." v-model="block.question">
